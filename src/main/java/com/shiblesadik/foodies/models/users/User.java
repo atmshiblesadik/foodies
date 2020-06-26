@@ -1,8 +1,8 @@
-package com.shiblesadik.foodies.models.persons;
+package com.shiblesadik.foodies.models.users;
 
 import com.shiblesadik.foodies.models.areas.Location;
 
-public class Person {
+public class User {
     private String id;
     private String name;
     private String phone;
@@ -10,10 +10,10 @@ public class Person {
     private String role;
     private Location homeAddress;
 
-    public Person() {
+    public User() {
     }
 
-    public Person(String id, String name, String phone, String email, String role, Location homeAddress) {
+    public User(String id, String name, String phone, String email, String role, Location homeAddress) {
         this.id = id;
         this.name = name;
         this.phone = phone;

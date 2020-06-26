@@ -1,4 +1,4 @@
 package com.shiblesadik.foodies.models.orders;
 
-public class Order {
+public class Order extends OrderProcessing {
 }
