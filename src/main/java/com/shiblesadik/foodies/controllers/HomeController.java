@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
     @GetMapping("/")
-    public String home() {
+    public String home(Model model) {
+        model.addAttribute("message", "Welcome Hello World");
         return "index";
     }
 
     @GetMapping("/login")
     public String login(Model model) {
-        model.addAttribute("servertoweb", "Welcome Hello World");
         return "login";
     }
 }
