@@ -69,4 +69,16 @@ public class User {
     public void setHomeAddress(Location homeAddress) {
         this.homeAddress = homeAddress;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", role='" + role + '\'' +
+                ", homeAddress=" + homeAddress +
+                '}';
+    }
 }
