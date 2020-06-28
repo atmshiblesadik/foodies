@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome | Foodies</title>
-</head>
+<head th:replace="fragements/header.html :: header"></head>
 <body>
-<h1>Welcome Foodies</h1>
-<h2>Thymeleaf Template Engine</h2>
-<p th:text="${message}"></p>
+<div th:replace="fragements/navbar.html :: navbar"></div>
+
+<div th:replace="fragements/footer.html :: footer"></div>
 </body>
 </html>
