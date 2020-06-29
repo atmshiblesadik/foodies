@@ -4,6 +4,36 @@
 <body>
 <div th:replace="fragements/navbar.html :: navbar"></div>
 
+<div>
+    <div class="d-flex">
+        <div class="flex-fill"></div>
+        <div class="flex-grow-0" style="width: 350px;">
+            <div class="login-form">
+                <!-- Dynamic action for registration customer, admin, raider -->
+                <form th:action="${action}" method="POST">
+                    <h4 class="modal-title">Login For Foods</h4>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Phone Number" required="required">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password" required="required">
+                    </div>
+                    <div class="form-group small clearfix">
+                        <label class="form-check-label"><input type="checkbox"> Remember me</label>
+                        <!-- Dynamic href for forgot customer, admin, raider -->
+                        <a th:href="${forgotPass}" class="forgot-link">Forgot Password?</a>
+                    </div>
+                    <input type="submit" class="btn btn-primary btn-md text-center align-content-center" value="Login">
+                </form>
+                <!-- Dynamic href for signup customer, admin, raider -->
+                <div class="text-center small">Don't have an account? <a th:href="${registration}">Sign up</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex-fill"></div>
+    </div>
+</div>
+
 <div th:replace="fragements/footer.html :: footer"></div>
 </body>
 </html>
