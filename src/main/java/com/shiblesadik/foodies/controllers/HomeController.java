@@ -12,13 +12,6 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("title", "Welcome");
-        model.addAttribute("message", "Welcome Hello World");
         return "index";
-    }
-
-    @GetMapping("/login")
-    public String login(Model model) {
-        model.addAttribute("title", "Login");
-        return "login";
     }
 }
