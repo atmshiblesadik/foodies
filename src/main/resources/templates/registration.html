@@ -10,15 +10,18 @@
         <div class="flex-grow-0" style="width: 350px;">
             <div class="login-form">
                 <!-- Dynamic action for registration customer, admin, raider -->
-                <form th:action="${action}" th:object="${registrationValidation}" method="POST">
+                <form th:action="${action}" th:object="${registrationValidation}" method="POST" name="registrationForm"
+                      onsubmit="return userRegistrationValidation()">
                     <h4 class="modal-title">Login For Foods</h4>
                     <div class="form-group">
                         <input type="text" name="username" th:field="*{username}" class="form-control"
-                               placeholder="Username" required="required">
+                               placeholder="Phone number" required="required">
+                        <div id="username-error" class="small text-danger"></div>
                     </div>
                     <div class="form-group">
                         <input type="email" name="email" th:field="*{email}" class="form-control" placeholder="Email"
                                required="required">
+                        <div id="email-error" class="small text-danger"></div>
                     </div>
                     <div class="form-group">
                         <input type="password" name="password" th:field="*{password}" class="form-control"
@@ -27,12 +30,13 @@
                     <div class="form-group">
                         <input type="password" name="confirmPassword" th:field="*{confirmPassword}" class="form-control"
                                placeholder="Confirm Password" required="required">
+                        <div id="password-error" class="small text-danger"></div>
                     </div>
                     <input type="submit" name="submit" th:field="submit"
-                           class="btn btn-primary btn-md text-center align-content-center" value="Login">
+                           class="btn btn-primary btn-md text-center align-content-center" value="Register">
                 </form>
-                <!-- Dynamic href for signup customer, admin, raider -->
-                <div class="text-center small">Already have an account? <a th:href="${login}">Login</a>
+                <!-- Dynamic href for sign up customer, admin, raider -->
+                <div class="small">Already have an account? <a th:href="${login}">Login</a>
                 </div>
             </div>
         </div>

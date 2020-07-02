@@ -38,6 +38,13 @@ public class RegistrationValidation {
         this.confirmPassword = confirmPassword;
     }
 
+    public String isValidUsername() {
+        String username = this.username;
+        String result = "";
+
+        return result;
+    }
+
     @Override
     public String toString() {
         return "RegistrationValidation{" +

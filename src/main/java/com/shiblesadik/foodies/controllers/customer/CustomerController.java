@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletResponse;
+
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
@@ -22,12 +24,14 @@ public class CustomerController {
     }
 
     @PostMapping("/registration")
-    public String postRegistration(@ModelAttribute RegistrationValidation registrationValidation) {
+    public void postRegistration(@ModelAttribute RegistrationValidation registrationValidation,
+                                 HttpServletResponse httpServletResponse) {
         System.out.println("username: " + registrationValidation.getUsername());
         System.out.println("email: " + registrationValidation.getEmail());
         System.out.println("password: " + registrationValidation.getPassword());
         System.out.println("confirm password: " + registrationValidation.getConfirmPassword());
-        return "index";
+        httpServletResponse.setHeader("Location", "/customer/login");
+        httpServletResponse.setStatus(302);
     }
 
     @GetMapping("/login")
