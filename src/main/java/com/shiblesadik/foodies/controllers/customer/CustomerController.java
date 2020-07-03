@@ -1,18 +1,20 @@
 package com.shiblesadik.foodies.controllers.customer;
 
 import com.shiblesadik.foodies.models.users.Registration;
+import com.shiblesadik.foodies.models.users.User;
+import com.shiblesadik.foodies.repository.users.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/registration")
     public String getRegistration(Model model) {
@@ -24,12 +26,14 @@ public class CustomerController {
     }
 
     @PostMapping("/registration")
-    public void postRegistration(@ModelAttribute Registration registration,
-                                 HttpServletResponse httpServletResponse) {
+    public void postRegistration(@ModelAttribute Registration registration, HttpServletResponse httpServletResponse) {
         boolean username = registration.isValidUsername();
         boolean email = registration.isValidEmail();
         boolean pass = registration.isValidPassword();
         if (username && email && pass) {
+            User user = new User();
+            user.prepareForRegistration(registration.getUsername(), registration.getEmail(), registration.getPassword());
+            userRepository.insert(user);
             httpServletResponse.setHeader("Location", "/customer/login");
         } else {
             httpServletResponse.setHeader("Location", "/customer/registration");
@@ -39,6 +43,7 @@ public class CustomerController {
 
     @GetMapping("/login")
     public String getLogin(Model model) {
+        model.addAttribute("login", new Registration());
         model.addAttribute("title", "Customer Login");
         model.addAttribute("action", "/customer/login");
         model.addAttribute("forgotPass", "/customer/forgotpass");
@@ -47,8 +52,14 @@ public class CustomerController {
     }
 
     @PostMapping("/login")
-    public String postLogin(Model model) {
-        model.addAttribute("title", "Customer Login");
-        return "index";
+    public void postLogin(@ModelAttribute Registration registration, HttpServletResponse httpServletResponse) {
+        User user = userRepository.findByPhoneAndPassword(registration.getUsername(), registration.getPassword());
+        if (user == null) {
+            httpServletResponse.setHeader("Location", "/customer/login");
+        } else {
+            System.out.println("Login Success");
+            httpServletResponse.setHeader("Location", "/");
+        }
+        httpServletResponse.setStatus(302);
     }
 }

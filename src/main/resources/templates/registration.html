@@ -12,7 +12,7 @@
                 <!-- Dynamic action for registration customer, admin, raider -->
                 <form th:action="${action}" th:object="${registration}" method="POST" name="registrationForm"
                       onsubmit="return userRegistrationValidation()">
-                    <h4 class="modal-title">Login For Foods</h4>
+                    <h4 class="modal-title">Registration For Foods</h4>
                     <div class="form-group">
                         <input type="text" name="username" th:field="*{username}" class="form-control"
                                placeholder="Phone number" required="required">

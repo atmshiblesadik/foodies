@@ -10,20 +10,25 @@
         <div class="flex-grow-0" style="width: 350px;">
             <div class="login-form">
                 <!-- Dynamic action for registration customer, admin, raider -->
-                <form th:action="${action}" method="POST">
+                <form th:action="${action}" th:object="${login}" method="POST" name="loginForm"
+                      onsubmit="return loginFormValidation()">
                     <h4 class="modal-title">Login For Foods</h4>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Username" required="required">
+                        <input type="text" name="username" th:field="*{username}" class="form-control"
+                               placeholder="Phone number" required="required">
+                        <div id="username-error" class="small text-danger"></div>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Password" required="required">
+                        <input type="password" name="password" th:field="*{password}" class="form-control"
+                               placeholder="Password" required="required">
                     </div>
                     <div class="form-group small clearfix">
                         <label class="form-check-label"><input type="checkbox"> Remember me</label>
                         <!-- Dynamic href for forgot customer, admin, raider -->
                         <a th:href="${forgotPass}" class="forgot-link">Forgot Password?</a>
                     </div>
-                    <input type="submit" class="btn btn-primary btn-md text-center align-content-center" value="Login">
+                    <input type="submit" name="submit" th:field="submit"
+                           class="btn btn-primary btn-md text-center align-content-center" value="Login">
                 </form>
                 <!-- Dynamic href for signup customer, admin, raider -->
                 <div class="small">Don't have an account? <a th:href="${registration}">Sign up</a>

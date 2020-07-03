@@ -42,3 +42,8 @@ function userRegistrationValidation() {
     let pass = checkPassword(form['password'].value, form['confirmPassword'].value);
     return (username && pass);
 }
+
+function loginFormValidation() {
+    let form = document.forms['loginForm'];
+    return checkPhoneNumber(form['username'].value);
+}
