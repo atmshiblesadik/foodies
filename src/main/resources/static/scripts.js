@@ -1,9 +1,5 @@
 'use strict';
 
-function showAlertForItsWorks() {
-    alert('its works');
-}
-
 function checkPhoneNumber(phoneNumber) {
     let username = document.getElementById('username-error');
     if (phoneNumber.length !== 11) {

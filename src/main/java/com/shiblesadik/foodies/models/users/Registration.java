@@ -1,6 +1,6 @@
-package com.shiblesadik.foodies.services;
+package com.shiblesadik.foodies.models.users;
 
-public class RegistrationValidation {
+public class Registration {
     private String username;
     private String email;
     private String password;
@@ -38,16 +38,28 @@ public class RegistrationValidation {
         this.confirmPassword = confirmPassword;
     }
 
-    public String isValidUsername() {
-        String username = this.username;
-        String result = "";
+    public boolean isValidUsername() {
+        if (this.username.length() != 11) return false;
+        for (int i = 0; i < this.username.length(); ++i) {
+            if (this.username.charAt(i) < '0' || this.username.charAt(i) > '9') return false;
+        }
+        return true;
+    }
 
-        return result;
+    public boolean isValidEmail() {
+        if (this.email.length() < 5) return false;
+
+        return true;
+    }
+
+    public boolean isValidPassword() {
+        if (!this.password.equals(this.confirmPassword)) return false;
+        return (this.password.length() >= 6);
     }
 
     @Override
     public String toString() {
-        return "RegistrationValidation{" +
+        return "Registration{" +
                 "username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +

@@ -1,6 +1,6 @@
 package com.shiblesadik.foodies.controllers.customer;
 
-import com.shiblesadik.foodies.services.RegistrationValidation;
+import com.shiblesadik.foodies.models.users.Registration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,7 @@ public class CustomerController {
 
     @GetMapping("/registration")
     public String getRegistration(Model model) {
-        model.addAttribute("registrationValidation", new RegistrationValidation());
+        model.addAttribute("registration", new Registration());
         model.addAttribute("title", "Customer Registration");
         model.addAttribute("action", "/customer/registration");
         model.addAttribute("login", "/customer/login");
@@ -24,13 +24,16 @@ public class CustomerController {
     }
 
     @PostMapping("/registration")
-    public void postRegistration(@ModelAttribute RegistrationValidation registrationValidation,
+    public void postRegistration(@ModelAttribute Registration registration,
                                  HttpServletResponse httpServletResponse) {
-        System.out.println("username: " + registrationValidation.getUsername());
-        System.out.println("email: " + registrationValidation.getEmail());
-        System.out.println("password: " + registrationValidation.getPassword());
-        System.out.println("confirm password: " + registrationValidation.getConfirmPassword());
-        httpServletResponse.setHeader("Location", "/customer/login");
+        boolean username = registration.isValidUsername();
+        boolean email = registration.isValidEmail();
+        boolean pass = registration.isValidPassword();
+        if (username && email && pass) {
+            httpServletResponse.setHeader("Location", "/customer/login");
+        } else {
+            httpServletResponse.setHeader("Location", "/customer/registration");
+        }
         httpServletResponse.setStatus(302);
     }
 

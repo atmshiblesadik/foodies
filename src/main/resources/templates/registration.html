@@ -10,7 +10,7 @@
         <div class="flex-grow-0" style="width: 350px;">
             <div class="login-form">
                 <!-- Dynamic action for registration customer, admin, raider -->
-                <form th:action="${action}" th:object="${registrationValidation}" method="POST" name="registrationForm"
+                <form th:action="${action}" th:object="${registration}" method="POST" name="registrationForm"
                       onsubmit="return userRegistrationValidation()">
                     <h4 class="modal-title">Login For Foods</h4>
                     <div class="form-group">
