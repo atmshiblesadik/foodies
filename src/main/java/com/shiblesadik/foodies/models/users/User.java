@@ -2,9 +2,7 @@ package com.shiblesadik.foodies.models.users;
 
 import com.shiblesadik.foodies.models.areas.Location;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "users")
 public class User {
     @Id
     private String id;
@@ -12,7 +10,6 @@ public class User {
     private String phone;
     private String email;
     private String role;
-    private String password;
     private Location homeAddress;
 
     public User() {
@@ -25,12 +22,6 @@ public class User {
         this.email = email;
         this.role = role;
         this.homeAddress = homeAddress;
-    }
-
-    public void prepareForRegistration(String phone, String email, String pass) {
-        this.phone = phone;
-        this.email = email;
-        this.password = pass;
     }
 
     public String getId() {
