@@ -5,14 +5,17 @@ import com.shiblesadik.foodies.models.areas.Location;
 import com.shiblesadik.foodies.models.orders.Order;
 import com.shiblesadik.foodies.models.reviews.Complaint;
 import com.shiblesadik.foodies.models.reviews.Review;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Arrays;
 
+@Document(collection = "customers")
 public class Customer extends User {
     private Address[] addresses;
     private Order[] orders;
     private Review[] reviews;
     private Complaint[] complaints;
+    private String password;
     private Location currentLocation;
 
     public Customer() {
@@ -26,6 +29,12 @@ public class Customer extends User {
         this.reviews = reviews;
         this.complaints = complaints;
         this.currentLocation = currentLocation;
+    }
+
+    public void prepareForRegistration(String username, String email, String password) {
+        this.setPhone(username);
+        this.setEmail(email);
+        this.password = password;
     }
 
     public Address[] getAddresses() {
@@ -77,6 +86,7 @@ public class Customer extends User {
                 ", reviews=" + Arrays.toString(reviews) +
                 ", complaints=" + Arrays.toString(complaints) +
                 ", currentLocation=" + currentLocation +
+                ", Password=" + password +
                 '}';
     }
 }

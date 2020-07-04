@@ -1,20 +1,22 @@
 package com.shiblesadik.foodies.controllers.customer;
 
+import com.google.common.hash.Hashing;
+import com.shiblesadik.foodies.models.users.Customer;
 import com.shiblesadik.foodies.models.users.Registration;
-import com.shiblesadik.foodies.models.users.User;
-import com.shiblesadik.foodies.repository.users.UserRepository;
+import com.shiblesadik.foodies.repository.users.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.nio.charset.StandardCharsets;
 
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
     @Autowired
-    private UserRepository userRepository;
+    private CustomerRepository customerRepository;
 
     @GetMapping("/registration")
     public String getRegistration(Model model) {
@@ -31,9 +33,11 @@ public class CustomerController {
         boolean email = registration.isValidEmail();
         boolean pass = registration.isValidPassword();
         if (username && email && pass) {
-            User user = new User();
-            user.prepareForRegistration(registration.getUsername(), registration.getEmail(), registration.getPassword());
-            userRepository.insert(user);
+            Customer customer = new Customer();
+            String passSha256 = Hashing.sha256()
+                    .hashString(registration.getPassword(), StandardCharsets.UTF_8).toString();
+            customer.prepareForRegistration(registration.getUsername(), registration.getEmail(), passSha256);
+            customerRepository.insert(customer);
             httpServletResponse.setHeader("Location", "/customer/login");
         } else {
             httpServletResponse.setHeader("Location", "/customer/registration");
@@ -53,11 +57,14 @@ public class CustomerController {
 
     @PostMapping("/login")
     public void postLogin(@ModelAttribute Registration registration, HttpServletResponse httpServletResponse) {
-        User user = userRepository.findByPhoneAndPassword(registration.getUsername(), registration.getPassword());
-        if (user == null) {
+        String passSha256 = Hashing.sha256()
+                .hashString(registration.getPassword(), StandardCharsets.UTF_8).toString();
+        Customer customer = customerRepository.findByPhoneAndPassword(registration.getUsername(), passSha256);
+        if (customer == null) {
             httpServletResponse.setHeader("Location", "/customer/login");
         } else {
             System.out.println("Login Success");
+            System.out.println(customer.toString());
             httpServletResponse.setHeader("Location", "/");
         }
         httpServletResponse.setStatus(302);
