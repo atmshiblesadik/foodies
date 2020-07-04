@@ -5,13 +5,16 @@ import com.shiblesadik.foodies.models.areas.Location;
 import com.shiblesadik.foodies.models.orders.Order;
 import com.shiblesadik.foodies.models.reviews.Complaint;
 import com.shiblesadik.foodies.models.reviews.Review;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Arrays;
 
+@Document(collection = "raider")
 public class Raider extends User {
     private Double rating;
     private boolean available;
     private boolean onRide;
+    private String password;
     private Address[] addresses;
     private Order[] orders;
     private Order[] cancelOrders;
@@ -35,6 +38,12 @@ public class Raider extends User {
         this.reviews = reviews;
         this.complaints = complaints;
         this.currentLocation = currentLocation;
+    }
+
+    public void prepareForRegistration(String username, String email, String password) {
+        this.setPhone(username);
+        this.setEmail(email);
+        this.password = password;
     }
 
     public Double getRating() {

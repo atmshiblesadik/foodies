@@ -86,7 +86,6 @@ public class Customer extends User {
                 ", reviews=" + Arrays.toString(reviews) +
                 ", complaints=" + Arrays.toString(complaints) +
                 ", currentLocation=" + currentLocation +
-                ", Password=" + password +
                 '}';
     }
 }
