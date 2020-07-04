@@ -8,14 +8,16 @@ public class Category {
     @Id
     private String id;
     private String name;
+    private String details;
     private String avatar;
 
     public Category() {
     }
 
-    public Category(String id, String name, String avatar) {
+    public Category(String id, String name, String details, String avatar) {
         this.id = id;
         this.name = name;
+        this.details = details;
         this.avatar = avatar;
     }
 
@@ -33,6 +35,14 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
     }
 
     public String getAvatar() {

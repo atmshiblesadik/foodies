@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header.html :: header"></head>
+<body>
+<div th:fragment="restaurant">
+
+</div>
+
+<div th:fragment="catagory">
+    <div>
+        <img th:src="@{/photos/burger.jpg}" alt="Category Photo"/>
+        <h2 th:text="${category.name}"></h2>
+        <textarea disabled th:text="${category.details}"></textarea>
+    </div>
+</div>
+
+<div th:fragment="item">
+
+</div>
+
+</body>
+</html>

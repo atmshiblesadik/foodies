@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragements/header.html :: header"></head>
+<body>
+<div th:replace="fragements/navbar.html :: navbar"></div>
+
+<div th:if="${type} == 'categories'">
+    <h1>Categories</h1>
+    <div th:each="category: ${categoryList}">
+        <div th:replace="fragements/template.html :: catagory"></div>
+    </div>
+</div>
+
+<div th:if="${type} == 'view-category'">
+    <h1>View Category</h1>
+</div>
+
+<div th:if="${type} == 'find-categories'">
+    <h1>Find Categories</h1>
+</div>
+
+<div th:if="${type} == 'add-category'">
+    <div class="d-flex">
+        <div class="flex-fill"></div>
+        <div class="flex-grow-0" style="width: 350px;">
+            <div class="login-form">
+                <form th:action="${action}" th:object="${category}" method="POST" name="addCategory">
+                    <h4 class="modal-title">Add Foods Category</h4>
+                    <div class="form-group">
+                        <input type="text" name="name" th:field="*{name}" class="form-control"
+                               placeholder="Name" required="required">
+                        <div id="name-error" class="small text-danger"></div>
+                    </div>
+                    <div class="form-group">
+                        <textarea type="text" name="details" th:field="*{details}" class="form-control"
+                                  placeholder="Details" required="required"></textarea>
+                        <div id="details-error" class="small text-danger"></div>
+                    </div>
+                    <input type="submit" name="submit" th:field="submit"
+                           class="btn btn-primary btn-md text-center align-content-center" value="Add">
+                </form>
+            </div>
+        </div>
+        <div class="flex-fill"></div>
+    </div>
+</div>
+
+<div th:replace="fragements/footer.html :: footer"></div>
+</body>
+</html>
