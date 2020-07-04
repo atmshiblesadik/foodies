@@ -9,17 +9,19 @@ public class User {
     private String name;
     private String phone;
     private String email;
+    private String avatar;
     private String role;
     private Location homeAddress;
 
     public User() {
     }
 
-    public User(String id, String name, String phone, String email, String role, Location homeAddress) {
+    public User(String id, String name, String phone, String email, String avatar, String role, Location homeAddress) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.email = email;
+        this.avatar = avatar;
         this.role = role;
         this.homeAddress = homeAddress;
     }
@@ -56,6 +58,14 @@ public class User {
         this.email = email;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
     public String getRole() {
         return role;
     }
@@ -79,6 +89,7 @@ public class User {
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
+                ", avatar='" + avatar + '\'' +
                 ", role='" + role + '\'' +
                 ", homeAddress=" + homeAddress +
                 '}';
