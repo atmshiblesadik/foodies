@@ -1,6 +1,7 @@
 package com.shiblesadik.foodies.controllers.foods;
 
 import com.shiblesadik.foodies.models.foods.Category;
+import com.shiblesadik.foodies.models.foods.Item;
 import com.shiblesadik.foodies.repository.foods.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,34 +23,58 @@ public class FoodsController {
         model.addAttribute("title", "All Categories");
         List<Category> categories = categoryRepository.findAll();
         model.addAttribute(categories);
-        return "category";
+        return "foods";
+    }
+
+    @GetMapping("/item/all")
+    public String allItems(Model model) {
+        return "foods";
     }
 
     @GetMapping("/category/view/{name}")
     public String viewCategoryItem(@PathVariable String name, Model model) {
         model.addAttribute("type", "view-category");
         model.addAttribute("title", "Find - " + name);
-        return "category";
+        Category category = categoryRepository.findByName(name);
+        model.addAttribute(category);
+        List<Category> categories = categoryRepository.findAll();
+        model.addAttribute(categories);
+        return "foods";
+    }
+
+    @GetMapping("/item/view/{id}")
+    public String viewItemDetails(@PathVariable String id, Model model) {
+        return "foods";
     }
 
     @GetMapping("/category/find/{name}")
-    public String categoryByName(@PathVariable String name, Model model) {
+    public String categoryFindByName(@PathVariable String name, Model model) {
         model.addAttribute("type", "find-categories");
         model.addAttribute("title", name + " - View");
-        return "category";
+        return "foods";
+    }
+
+    @GetMapping("/item/find/{name}")
+    public String itemFindByName(@PathVariable String name, Model model) {
+        return "foods";
     }
 
     @GetMapping("/category/add")
-    public String getCategoryAdd(Model model) {
+    public String categoryAddGetRequest(Model model) {
         model.addAttribute("category", new Category());
         model.addAttribute("type", "add-category");
         model.addAttribute("title", "Add Category");
         model.addAttribute("action", "/foods/category/add");
-        return "category";
+        return "foods";
+    }
+
+    @GetMapping("/item/add")
+    public String itemAddGetRequest(Model model) {
+        return "foods";
     }
 
     @PostMapping("/category/add")
-    public void postCategoryAdd(@ModelAttribute Category category, HttpServletResponse httpServletResponse) {
+    public void categoryAddPostRequest(@ModelAttribute Category category, HttpServletResponse httpServletResponse) {
         Category nameCategory = categoryRepository.findByName(category.getName());
         if (nameCategory == null) {
             categoryRepository.save(category);
@@ -60,5 +85,10 @@ public class FoodsController {
             httpServletResponse.setHeader("Location", "/foods/category/add");
         }
         httpServletResponse.setStatus(302);
+    }
+
+    @PostMapping("/item/add")
+    public String itemAddPostRequest(@ModelAttribute Item item, HttpServletResponse httpServletResponse) {
+        return null;
     }
 }

@@ -6,19 +6,24 @@
 
 </div>
 
-<div th:fragment="catagory">
+<div th:fragment="list-view">
     <div class="card p-2" style="width: 18rem;">
         <img th:src="@{/photos/burger.jpg}" class="card-img-top" alt="Category Photo">
         <div class="card-body">
-            <h5 th:text="${category.name}" class="card-title"></h5>
-            <p th:text="${category.details}" class="card-text"></p>
-            <a href="/foods/category/all" class="btn btn-primary">View Foods</a>
+            <h5 th:text="${list.name}" class="card-title"></h5>
+            <p th:text="${list.details}" class="card-text"></p>
+            <a th:href="'/foods/category/view/'+${list.name}" class="btn btn-primary">View Foods</a>
         </div>
     </div>
 </div>
 
-<div th:fragment="item">
-
+<div th:fragment="details">
+    <div class="jumbotron">
+        <img th:src="@{/photos/burger.jpg}" alt="Category Photo" width="480px" height="auto">
+        <h1 th:text="${category.name}" class="display-4"></h1>
+        <hr class="my-4">
+        <p th:text="${category.details}" class="lead"></p>
+    </div>
 </div>
 
 </body>
