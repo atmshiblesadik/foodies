@@ -7,10 +7,13 @@
 </div>
 
 <div th:fragment="catagory">
-    <div>
-        <img th:src="@{/photos/burger.jpg}" alt="Category Photo" width="300px" height="auto"/>
-        <h2 th:text="${category.name}"></h2>
-        <p disabled th:text="${category.details}"></p>
+    <div class="card p-1" style="width: 18rem;">
+        <img th:src="@{/photos/burger.jpg}" class="card-img-top" alt="Category Photo">
+        <div class="card-body">
+            <h5 th:text="${category.name}" class="card-title"></h5>
+            <p th:text="${category.details}" class="card-text"></p>
+            <a href="/foods/category/all" class="btn btn-primary">View Foods</a>
+        </div>
     </div>
 </div>
 

@@ -5,9 +5,11 @@
 <div th:replace="fragements/navbar.html :: navbar"></div>
 
 <div th:if="${type} == 'categories'">
-    <h1>Categories</h1>
-    <div th:each="category: ${categoryList}">
-        <div th:replace="fragements/template.html :: catagory"></div>
+    <h1 class="text-center">Categories</h1>
+    <div class="d-flex justify-content-around flex-wrap p-2">
+        <div th:each="category: ${categoryList}" class="flex-fill p-3">
+            <div th:replace="fragements/template.html :: catagory"></div>
+        </div>
     </div>
 </div>
 
