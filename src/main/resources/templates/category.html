@@ -7,18 +7,18 @@
 <div th:if="${type} == 'categories'">
     <h1 class="text-center">Categories</h1>
     <div class="d-flex justify-content-around flex-wrap p-2">
-        <div th:each="category: ${categoryList}" class="flex-fill p-3">
+        <div th:each="category: ${categoryList}" class="p-3">
             <div th:replace="fragements/template.html :: catagory"></div>
         </div>
     </div>
 </div>
 
 <div th:if="${type} == 'view-category'">
-    <h1>View Category</h1>
+    <h1 class="text-center">Foods of category</h1>
 </div>
 
 <div th:if="${type} == 'find-categories'">
-    <h1>Find Categories</h1>
+    <h1 class="text-center">Find your categories</h1>
 </div>
 
 <div th:if="${type} == 'add-category'">
