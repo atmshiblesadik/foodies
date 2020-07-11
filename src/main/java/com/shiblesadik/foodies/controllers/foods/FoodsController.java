@@ -16,6 +16,7 @@ import java.util.List;
 public class FoodsController {
     @Autowired
     private CategoryRepository categoryRepository;
+//    @Autowired
 
     @GetMapping("/category/all")
     public String allCategories(Model model) {
@@ -28,6 +29,8 @@ public class FoodsController {
 
     @GetMapping("/item/all")
     public String allItems(Model model) {
+        model.addAttribute("type", "items");
+        model.addAttribute("title", "All Foods");
         return "foods";
     }
 
