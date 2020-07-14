@@ -24,14 +24,14 @@ public class FoodsController {
         model.addAttribute("title", "All Categories");
         List<Category> categories = categoryRepository.findAll();
         model.addAttribute(categories);
-        return "foods";
+        return "list-views";
     }
 
     @GetMapping("/item/all")
     public String allItems(Model model) {
         model.addAttribute("type", "items");
         model.addAttribute("title", "All Foods");
-        return "foods";
+        return "list-views";
     }
 
     @GetMapping("/category/view/{name}")
@@ -42,24 +42,24 @@ public class FoodsController {
         model.addAttribute(category);
         List<Category> categories = categoryRepository.findAll();
         model.addAttribute(categories);
-        return "foods";
+        return "list-views";
     }
 
     @GetMapping("/item/view/{id}")
     public String viewItemDetails(@PathVariable String id, Model model) {
-        return "foods";
+        return "list-views";
     }
 
     @GetMapping("/category/find/{name}")
     public String categoryFindByName(@PathVariable String name, Model model) {
         model.addAttribute("type", "find-categories");
         model.addAttribute("title", name + " - View");
-        return "foods";
+        return "list-views";
     }
 
     @GetMapping("/item/find/{name}")
     public String itemFindByName(@PathVariable String name, Model model) {
-        return "foods";
+        return "list-views";
     }
 
     @GetMapping("/category/add")
@@ -68,12 +68,12 @@ public class FoodsController {
         model.addAttribute("type", "add-category");
         model.addAttribute("title", "Add Category");
         model.addAttribute("action", "/foods/category/add");
-        return "foods";
+        return "list-views";
     }
 
     @GetMapping("/item/add")
     public String itemAddGetRequest(Model model) {
-        return "foods";
+        return "list-views";
     }
 
     @PostMapping("/category/add")
