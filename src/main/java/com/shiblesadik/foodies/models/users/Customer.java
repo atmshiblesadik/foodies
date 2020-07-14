@@ -21,9 +21,9 @@ public class Customer extends User {
     public Customer() {
     }
 
-    public Customer(String id, String name, String phone, String email, String role, Location homeAddress,
+    public Customer(String id, String name, String phone, String email, String avatar, String role, Location homeAddress,
                     Address[] addresses, Order[] orders, Review[] reviews, Complaint[] complaints, Location currentLocation) {
-        super(id, name, phone, email, role, homeAddress);
+        super(id, name, phone, email, avatar, role, homeAddress);
         this.addresses = addresses;
         this.orders = orders;
         this.reviews = reviews;

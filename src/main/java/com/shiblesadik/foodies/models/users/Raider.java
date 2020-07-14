@@ -25,10 +25,10 @@ public class Raider extends User {
     public Raider() {
     }
 
-    public Raider(String id, String name, String phone, String email, String role, Location homeAddress, Double rating,
+    public Raider(String id, String name, String phone, String email, String avatar, String role, Location homeAddress, Double rating,
                   boolean available, boolean onRide, Address[] addresses, Order[] orders, Order[] cancelOrders,
                   Review[] reviews, Complaint[] complaints, Location currentLocation) {
-        super(id, name, phone, email, role, homeAddress);
+        super(id, name, phone, email, avatar, role, homeAddress);
         this.rating = rating;
         this.available = available;
         this.onRide = onRide;

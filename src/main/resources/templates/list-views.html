@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragements/header.html :: header"></head>
+<body>
+<div th:replace="fragements/navbar.html :: navbar"></div>
+
+<div th:if="${type} == 'categories'">
+    <h1 class="text-center">Categories</h1>
+    <div class="d-flex justify-content-around flex-wrap p-2">
+        <div th:each="list: ${categoryList}" class="p-3">
+            <div th:replace="fragements/template.html :: list-view"></div>
+        </div>
+    </div>
+</div>
+
+<div th:if="${type} == 'view-category'">
+    <h1 class="text-center">Foods of category</h1>
+    <div th:replace="fragements/template.html :: details"></div>
+    <h1 class="text-center">Categories</h1>
+    <div class="d-flex justify-content-around flex-wrap p-2">
+        <div th:each="list: ${categoryList}" class="p-3">
+            <div th:replace="fragements/template.html :: list-view"></div>
+        </div>
+    </div>
+</div>
+
+<div th:if="${type} == 'find-categories'">
+    <h1 class="text-center">Find your categories</h1>
+</div>
+
+<div th:if="${type} == 'add-category'">
+    <div th:replace="fragements/template.html :: add-category"></div>
+</div>
+
+<div th:replace="fragements/footer.html :: footer"></div>
+</body>
+</html>
