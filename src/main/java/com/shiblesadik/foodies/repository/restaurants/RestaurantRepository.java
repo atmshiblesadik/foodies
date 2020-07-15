@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface RestaurantRepository extends MongoRepository<Restaurant, String> {
+    Restaurant findRestaurantById(String id);
+
     Optional<Restaurant> findById(String id);
 
     List<Restaurant> findByNameLike(String id);

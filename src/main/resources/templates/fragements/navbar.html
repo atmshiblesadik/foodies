@@ -3,7 +3,7 @@
 <head th:replace="header.html :: header"></head>
 <body>
 <div th:fragment="navbar">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
         <a class="navbar-brand" href="/">Foodies</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +15,7 @@
                     <a class="nav-link" href="">Foods<span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Restaurants</a>
+                    <a class="nav-link" href="/restaurant/all">Restaurants</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button"
@@ -24,13 +24,13 @@
                         Categories
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/">Pizza</a>
-                        <a class="dropdown-item" href="/">Burger</a>
-                        <a class="dropdown-item" href="/">Biriyani</a>
-                        <a class="dropdown-item" href="/">Kabab</a>
-                        <a class="dropdown-item" href="/">Set Menu</a>
+                        <a class="dropdown-item" href="/category/view/Pizza">Pizza</a>
+                        <a class="dropdown-item" href="/category/view/Burger">Burger</a>
+                        <a class="dropdown-item" href="/category/view/Biriyani">Biriyani</a>
+                        <a class="dropdown-item" href="/category/view/Kabab">Kabab</a>
+                        <a class="dropdown-item" href="/category/view/Set-Menu">Set Menu</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/foods/category/all">Something else</a>
+                        <a class="dropdown-item" href="/category/all">Something else</a>
                     </div>
                 </li>
                 <li>
@@ -41,13 +41,9 @@
                     </form>
 
                 </li>
-                <!--                <li class="nav-item">-->
-                <!--                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
-                <!--                </li>-->
             </ul>
             <div>
                 <a class="btn btn-outline-success my-2 my-sm-0" href="/customer/login">Login</a>
-                <!--                <a class="btn btn-outline-success my-2 my-sm-0" href="/customer/login">Logout</a>-->
             </div>
         </div>
     </nav>

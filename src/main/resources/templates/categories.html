@@ -11,11 +11,16 @@
             <div th:replace="fragements/template.html :: list-view"></div>
         </div>
     </div>
+    <div class="d-flex justify-content-around flex-wrap p-2">
+        <a href="/category/add" class="btn btn-primary">Add Category</a>
+    </div>
 </div>
 
 <div th:if="${type} == 'view-category'">
     <h1 class="text-center">Foods of category</h1>
-    <div th:replace="fragements/template.html :: details"></div>
+    <div th:each="entity: ${category}">
+        <div th:replace="fragements/template.html :: details"></div>
+    </div>
     <h1 class="text-center">Categories</h1>
     <div class="d-flex justify-content-around flex-wrap p-2">
         <div th:each="list: ${categoryList}" class="p-3">
@@ -29,7 +34,7 @@
 </div>
 
 <div th:if="${type} == 'add-category'">
-    <div th:replace="fragements/template.html :: add-category"></div>
+    <div th:replace="fragements/template.html :: add"></div>
 </div>
 
 <div th:replace="fragements/footer.html :: footer"></div>

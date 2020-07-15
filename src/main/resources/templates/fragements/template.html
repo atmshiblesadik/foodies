@@ -12,67 +12,54 @@
         <div class="card-body">
             <h5 th:text="${list.name}" class="card-title"></h5>
             <p th:text="${list.details}" class="card-text"></p>
-            <a th:href="'/foods/category/view/'+${list.name}" class="btn btn-primary">View Foods</a>
+            <p th:if="${type} == 'restaurants'" th:text="${list.location}" class="card-text"></p>
+            <p th:if="${type} == 'foods'" th:text="${list.price}" class="card-text"></p>
+            <a th:if="${type} == 'categories'" th:href="'/category/view/'+${list.name}" class="btn btn-primary">View
+                Foods</a>
+            <a th:if="${type} == 'restaurants'" th:href="'/restaurant/view/'+${list.id}" class="btn btn-primary">View
+                Foods</a>
+            <a th:if="${type} == 'foods'" th:href="'/'" class="btn btn-primary">Order Food</a>
         </div>
     </div>
 </div>
 
 <div th:fragment="details">
-    <div class="jumbotron">
-        <img th:src="@{/photos/burger.jpg}" alt="Category Photo" width="480px" height="auto">
-        <h1 th:text="${category.name}" class="display-4"></h1>
-        <hr class="my-4">
-        <p th:text="${category.details}" class="lead"></p>
-    </div>
-</div>
-
-<div th:fragment="add-category">
-    <div class="d-flex">
-        <div class="flex-fill"></div>
-        <div class="flex-grow-0" style="width: 350px;">
-            <div class="login-form">
-                <form th:action="${action}" th:object="${category}" method="POST" name="addCategory">
-                    <h4 class="modal-title">Add Foods Category</h4>
-                    <div class="form-group">
-                        <input type="text" name="name" th:field="*{name}" class="form-control"
-                               placeholder="Name" required="required">
-                        <div id="category-name-error" class="small text-danger"></div>
-                    </div>
-                    <div class="form-group">
-                        <textarea type="text" name="details" th:field="*{details}" class="form-control"
-                                  placeholder="Details" required="required"></textarea>
-                        <div id="category-details-error" class="small text-danger"></div>
-                    </div>
-                    <input type="submit" name="submit" th:field="submit"
-                           class="btn btn-primary btn-md text-center align-content-center" value="Add">
-                </form>
-            </div>
+    <div class="d-flex justify-content-around flex-wrap p-2">
+        <div class="jumbotron">
+            <img th:src="@{/photos/burger.jpg}" alt="Category Photo" width="480px" height="auto">
+            <h1 th:text="${entity.name}" class="display-4"></h1>
+            <hr class="my-4">
+            <p th:text="${entity.details}" class="lead"></p>
         </div>
-        <div class="flex-fill"></div>
     </div>
 </div>
 
-<div th:fragment="add-item">
+<div th:fragment="add">
     <div class="d-flex">
         <div class="flex-fill"></div>
         <div class="flex-grow-0" style="width: 350px;">
             <div class="login-form">
-                <form th:action="${action}" th:object="${item}" method="POST" name="addCategory">
-                    <h4 class="modal-title">Add Foods Category</h4>
+                <form th:action="${action}" th:object="${entity}" method="POST" name="add">
+                    <h4 th:text="${modalTitle}" class="modal-title"></h4>
                     <div class="form-group">
                         <input type="text" name="name" th:field="*{name}" class="form-control"
                                placeholder="Name" required="required">
-                        <div id="item-name-error" class="small text-danger"></div>
+                        <div id="name-error" class="small text-danger"></div>
                     </div>
                     <div class="form-group">
                         <textarea type="text" name="details" th:field="*{details}" class="form-control"
                                   placeholder="Details" required="required"></textarea>
-                        <div id="item-details-error" class="small text-danger"></div>
+                        <div id="details-error" class="small text-danger"></div>
                     </div>
-                    <div class="form-group">
+                    <div th:if="${type} == 'add-foods'" class="form-group">
                         <input type="number" name="price" th:field="*{price}" class="form-control"
                                placeholder="Price in BDT" required="required">
-                        <div id="item-price-error" class="small text-danger"></div>
+                        <div id="price-error" class="small text-danger"></div>
+                    </div>
+                    <div th:if="${type} == 'add-restaurants'" class="form-group">
+                        <input type="text" name="location" th:field="*{location}" class="form-control"
+                               placeholder="Location" required="required">
+                        <div id="location-error" class="small text-danger"></div>
                     </div>
                     <input type="submit" name="submit" th:field="submit"
                            class="btn btn-primary btn-md text-center align-content-center" value="Add">
