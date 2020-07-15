@@ -1,5 +1,6 @@
 package com.shiblesadik.foodies.controllers.restaurants;
 
+import com.shiblesadik.foodies.models.foods.Item;
 import com.shiblesadik.foodies.models.restaurants.Restaurant;
 import com.shiblesadik.foodies.repository.restaurants.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,29 +43,29 @@ public class RestaurantsController {
         return "restaurants";
     }
 
-    @GetMapping("/view/{name}/{foods}")
-    public String viewAllFoods(Model model, @PathVariable String name, @PathVariable String foods) {
+    @GetMapping("/view/{id}/foods")
+    public String viewAllFoods(Model model, @PathVariable String id) {
         model.addAttribute("type", "foods");
         model.addAttribute("title", "All Foods");
         return "restaurants";
     }
 
-    @GetMapping("/view/{name}/category/all")
-    public String viewAllCategories(Model model, @PathVariable String name) {
+    @GetMapping("/view/{id}/category/all")
+    public String viewAllCategories(Model model, @PathVariable String id) {
         model.addAttribute("type", "categories");
         model.addAttribute("title", "All Categories");
         return "restaurants";
     }
 
-    @GetMapping("/category/{name}/category/{categoryName}")
-    public String viewCategoryByName(Model model, @PathVariable String name, @PathVariable String categoryName) {
+    @GetMapping("/category/{id}/category/{categoryName}")
+    public String viewCategoryByName(Model model, @PathVariable String id, @PathVariable String categoryName) {
         model.addAttribute("type", "Category");
-        model.addAttribute("title", "Category-" + name);
+        model.addAttribute("title", "Category-");
         return "restaurants";
     }
 
     @GetMapping("/add")
-    public String addFoodGetRequest(Model model) {
+    public String addRestaurantGetRequest(Model model) {
         model.addAttribute("entity", new Restaurant());
         model.addAttribute("type", "add-restaurants");
         model.addAttribute("title", "Add Restaurant");
@@ -73,10 +74,26 @@ public class RestaurantsController {
     }
 
     @PostMapping("/add")
-    public void addFoodPostRequest(@ModelAttribute Restaurant restaurant, HttpServletResponse httpServletResponse) {
+    public void addRestaurantPostRequest(@ModelAttribute Restaurant restaurant, HttpServletResponse httpServletResponse) {
         restaurantRepository.save(restaurant);
         System.out.println("Restaurant Add Success");
         httpServletResponse.setHeader("Location", "/restaurant/all");
+        httpServletResponse.setStatus(302);
+    }
+
+    @GetMapping("/view/{id}/foods/add")
+    public String addFoodGetRequest(Model model, @PathVariable String id) {
+        model.addAttribute("entity", new Item());
+        model.addAttribute("type", "add-foods");
+        model.addAttribute("title", "Add Food");
+        model.addAttribute("modalTitle", "Add Food");
+        return "restaurants";
+    }
+
+    @PostMapping("/view/{id}/foods/add")
+    public void addFoodPostRequest(@ModelAttribute Item item, HttpServletResponse httpServletResponse) {
+        System.out.println("Restaurant Add Success");
+        httpServletResponse.setHeader("Location", "/restaurant/" + "" + "/foods");
         httpServletResponse.setStatus(302);
     }
 }
