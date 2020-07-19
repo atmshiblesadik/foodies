@@ -1,7 +1,7 @@
 package com.shiblesadik.foodies.models.orders;
 
 import com.shiblesadik.foodies.models.datetime.DateTime;
-import com.shiblesadik.foodies.models.foods.Item;
+import com.shiblesadik.foodies.models.foods.Food;
 
 import java.util.Arrays;
 
@@ -10,7 +10,7 @@ public class Order extends OrderProcessing {
     private String userId;
     private String raiderId;
     private String restaurantId;
-    private Item[] items;
+    private Food[] foods;
     private String instruction;
     private Double totalAmount;
     private Double discountAmount;
@@ -27,7 +27,7 @@ public class Order extends OrderProcessing {
 
     public Order(DateTime orderPlaced, DateTime raiderReceiveOrder, DateTime restaurantReceiveOrder, DateTime foodComplete,
                  DateTime raiderReceiveFood, DateTime orderDelivery, String id, String userId, String raiderId,
-                 String restaurantId, Item[] items, String instruction, Double totalAmount, Double discountAmount,
+                 String restaurantId, Food[] foods, String instruction, Double totalAmount, Double discountAmount,
                  Double finalAmount, Integer raiderRating, Integer foodRating, String complaintAgainstRaiderId,
                  String complaintAgainstFoodId, String complaintAgainstRestaurantId, String reviewId) {
         super(orderPlaced, raiderReceiveOrder, restaurantReceiveOrder, foodComplete, raiderReceiveFood, orderDelivery);
@@ -35,7 +35,7 @@ public class Order extends OrderProcessing {
         this.userId = userId;
         this.raiderId = raiderId;
         this.restaurantId = restaurantId;
-        this.items = items;
+        this.foods = foods;
         this.instruction = instruction;
         this.totalAmount = totalAmount;
         this.discountAmount = discountAmount;
@@ -80,12 +80,12 @@ public class Order extends OrderProcessing {
         this.restaurantId = restaurantId;
     }
 
-    public Item[] getItems() {
-        return items;
+    public Food[] getFoods() {
+        return foods;
     }
 
-    public void setItems(Item[] items) {
-        this.items = items;
+    public void setFoods(Food[] foods) {
+        this.foods = foods;
     }
 
     public String getInstruction() {
@@ -175,7 +175,7 @@ public class Order extends OrderProcessing {
                 ", userId='" + userId + '\'' +
                 ", raiderId='" + raiderId + '\'' +
                 ", restaurantId='" + restaurantId + '\'' +
-                ", items=" + Arrays.toString(items) +
+                ", foods=" + Arrays.toString(foods) +
                 ", instruction='" + instruction + '\'' +
                 ", totalAmount=" + totalAmount +
                 ", discountAmount=" + discountAmount +

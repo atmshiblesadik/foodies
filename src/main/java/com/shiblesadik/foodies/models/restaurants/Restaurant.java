@@ -1,7 +1,7 @@
 package com.shiblesadik.foodies.models.restaurants;
 
 import com.shiblesadik.foodies.models.areas.Address;
-import com.shiblesadik.foodies.models.foods.Item;
+import com.shiblesadik.foodies.models.foods.Food;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -16,7 +16,7 @@ public class Restaurant {
     private String[] phones;
     private String location;
     private Address address;
-    private Item[] items;
+    private Food[] foods;
     private Double rating;
     private String avatar;
     private String[] reviews;
@@ -27,7 +27,7 @@ public class Restaurant {
     public Restaurant() {
     }
 
-    public Restaurant(String id, String name, String email, String[] phones, String location, Address address, Item[] items,
+    public Restaurant(String id, String name, String email, String[] phones, String location, Address address, Food[] foods,
                       Double rating, String avatar, String[] reviews, String[] orders, String details,
                       String[] openingTime) {
         this.id = id;
@@ -36,7 +36,7 @@ public class Restaurant {
         this.phones = phones;
         this.location = location;
         this.address = address;
-        this.items = items;
+        this.foods = foods;
         this.rating = rating;
         this.avatar = avatar;
         this.reviews = reviews;
@@ -93,12 +93,12 @@ public class Restaurant {
         this.address = address;
     }
 
-    public Item[] getItems() {
-        return items;
+    public Food[] getFoods() {
+        return foods;
     }
 
-    public void setItems(Item[] items) {
-        this.items = items;
+    public void setFoods(Food[] foods) {
+        this.foods = foods;
     }
 
     public Double getRating() {
@@ -157,7 +157,7 @@ public class Restaurant {
                 ", email='" + email + '\'' +
                 ", phones=" + Arrays.toString(phones) +
                 ", address=" + address +
-                ", items=" + Arrays.toString(items) +
+                ", foods=" + Arrays.toString(foods) +
                 ", rating=" + rating +
                 ", avatar='" + avatar + '\'' +
                 ", reviews=" + Arrays.toString(reviews) +

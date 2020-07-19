@@ -1,6 +1,6 @@
 package com.shiblesadik.foodies.controllers.restaurants;
 
-import com.shiblesadik.foodies.models.foods.Item;
+import com.shiblesadik.foodies.models.foods.Food;
 import com.shiblesadik.foodies.models.restaurants.Restaurant;
 import com.shiblesadik.foodies.repository.restaurants.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/restaurant")
@@ -83,7 +82,7 @@ public class RestaurantsController {
 
     @GetMapping("/view/{id}/foods/add")
     public String addFoodGetRequest(Model model, @PathVariable String id) {
-        model.addAttribute("entity", new Item());
+        model.addAttribute("entity", new Food());
         model.addAttribute("type", "add-foods");
         model.addAttribute("title", "Add Food");
         model.addAttribute("modalTitle", "Add Food");
@@ -91,7 +90,7 @@ public class RestaurantsController {
     }
 
     @PostMapping("/view/{id}/foods/add")
-    public void addFoodPostRequest(@ModelAttribute Item item, HttpServletResponse httpServletResponse) {
+    public void addFoodPostRequest(@ModelAttribute Food food, HttpServletResponse httpServletResponse) {
         System.out.println("Restaurant Add Success");
         httpServletResponse.setHeader("Location", "/restaurant/" + "" + "/foods");
         httpServletResponse.setStatus(302);

@@ -1,23 +1,36 @@
 package com.shiblesadik.foodies.models.foods;
 
-import java.util.Arrays;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-public class Item {
+@Document(collection = "foods")
+public class Food {
+    @Id
+    private String id;
     private String name;
     private Double price;
-    private String[] categoriesId;
+    private String categoryId;
     private String avatar;
     private String details;
 
-    public Item() {
+    public Food() {
     }
 
-    public Item(String name, Double price, String[] categoriesId, String avatar, String details) {
+    public Food(String id, String name, Double price, String categoryId, String avatar, String details) {
+        this.id = id;
         this.name = name;
         this.price = price;
-        this.categoriesId = categoriesId;
+        this.categoryId = categoryId;
         this.avatar = avatar;
         this.details = details;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -34,15 +47,14 @@ public class Item {
 
     public void setPrice(Double price) {
         this.price = price;
-        this.price = price;
     }
 
-    public String[] getCategoriesId() {
-        return categoriesId;
+    public String getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategoriesId(String[] categoriesId) {
-        this.categoriesId = categoriesId;
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getAvatar() {
@@ -63,10 +75,11 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item{" +
+        return "Food{" +
+                "id='" + id + '\'' +
                 "name='" + name + '\'' +
                 ", price=" + price +
-                ", categoriesId=" + Arrays.toString(categoriesId) +
+                ", categoryId=" + categoryId +
                 ", details='" + details + '\'' +
                 '}';
     }

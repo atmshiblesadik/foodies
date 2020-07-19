@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Arrays;
 
-@Document(collection = "raider")
+@Document(collection = "raiders")
 public class Raider extends User {
     private Double rating;
     private boolean available;
