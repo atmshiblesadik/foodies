@@ -1,0 +1,145 @@
+{
+    "login-customer": {
+        "categories": {
+            "categoryId": {
+                "foods": {
+                    "foodId": "string",
+                    "restaurantId": "string",
+                    "order": {
+                        "restaurant-area-code": "customer-area-code"
+                    }
+                },
+                "restaurants": {
+                    "restaurantId": "string",
+                    "foods": {
+                        "foodId": {
+                            "order": {
+                                "restaurant-area-code": "customer-area-code"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "foods": {
+            "foodId": {
+                "categoryId": "string",
+                "restaurantId": "string",
+                "order": {
+                    "restaurant-area-code": "customer-area-code"
+                }
+            }
+        },
+        "restaurants": {
+            "restaurantId": {
+                "categories": {
+                    "categoryId": {
+                        "foods": {
+                            "foodId": "string",
+                            "order": {
+                                "restaurant-area-code": "customer-area-code"
+                            }
+                        }
+                    }
+                },
+                "foods": {
+                    "foodId": "string",
+                    "order": {
+                        "restaurant-area-code": "customer-area-code"
+                    }
+                },
+                "reviews": {
+                    "reviewId": {
+                        "review": "string",
+                        "customerId": "string",
+                        "rating": "number"
+                    }
+                }
+            }
+        },
+        "checkout": {
+            "all-same-restaurant": {
+                "notes": "string",
+                "confirm": {
+                    "orderId": "generate-new-order-id"
+                }
+            }
+        },
+        "orders": {
+            "orderId": {
+                "restaurantId": "string",
+                "raiderId": "string",
+                "foods": "foodId[]: string"
+            }
+        },
+        "logout": "string"
+    },
+    "login-raider": {
+    },
+    "login-restaurant": {
+    },
+    "login-admin": {
+    },
+    "guest": {
+        "categories": {
+            "categoryId": {
+                "foods": {
+                    "foodId": "string",
+                    "restaurantId": "string",
+                    "add-to-cart": {
+                        "checkout": "request-to-login-or-registration"
+                    }
+                },
+                "restaurants": {
+                    "restaurantId": "string",
+                    "foods": {
+                        "foodId": "string",
+                        "add-to-cart": {
+                            "checkout": "request-to-login-or-registration"
+                        }
+                    }
+                }
+            }
+        },
+        "foods": {
+            "foodId": {
+                "categoryId": "string",
+                "restaurantId": "string",
+                "add-to-cart": {
+                    "checkout": "request-to-login-or-registration"
+                }
+            }
+        },
+        "restaurants": {
+            "restaurantId": {
+                "categories": {
+                    "categoryId": {
+                        "foods": {
+                            "foodId": "string",
+                            "add-to-cart": {
+                                "checkout": "request-to-login-or-registration"
+                            }
+                        }
+                    }
+                },
+                "foods": {
+                    "foodId": "string",
+                    "add-to-cart": {
+                        "checkout": "request-to-login-or-registration"
+                    }
+                },
+                "reviews": {
+                    "reviewId": {
+                        "review": "string",
+                        "customerId": "string",
+                        "rating": "number"
+                    }
+                }
+            }
+        },
+        "registration": {
+            "customer": "generate-new-customer",
+            "login": "goto-login-page"
+        }
+    }
+}
