@@ -33,13 +33,13 @@ public class RaiderController {
         boolean email = registration.isValidEmail();
         boolean pass = registration.isValidPassword();
         if (username && email && pass) {
-            Raider raiderPhone = raiderRepository.findByPhone(registration.getUsername());
+            Raider raiderPhone = raiderRepository.findByPhone(registration.getPhone());
             Raider raiderEmail = raiderRepository.findByEmail(registration.getEmail());
             if (raiderPhone == null && raiderEmail == null) {
                 Raider raider = new Raider();
                 String passSha256 = Hashing.sha256()
                         .hashString(registration.getPassword(), StandardCharsets.UTF_8).toString();
-                raider.prepareForRegistration(registration.getUsername(), registration.getEmail(), passSha256);
+                raider.prepareForRegistration(registration.getPhone(), registration.getEmail(), passSha256);
                 raiderRepository.save(raider);
                 httpServletResponse.setHeader("Location", "/raider/login");
             } else {
@@ -71,7 +71,7 @@ public class RaiderController {
     public void postLogin(@ModelAttribute Registration registration, HttpServletResponse httpServletResponse) {
         String passSha256 = Hashing.sha256()
                 .hashString(registration.getPassword(), StandardCharsets.UTF_8).toString();
-        Raider raider = raiderRepository.findByPhoneAndPassword(registration.getUsername(), passSha256);
+        Raider raider = raiderRepository.findByPhoneAndPassword(registration.getPhone(), passSha256);
         if (raider == null) {
             httpServletResponse.setHeader("Location", "/raider/login");
         } else {

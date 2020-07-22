@@ -33,13 +33,13 @@ public class CustomerController {
         boolean email = registration.isValidEmail();
         boolean pass = registration.isValidPassword();
         if (username && email && pass) {
-            Customer customerPhone = customerRepository.findByPhone(registration.getUsername());
+            Customer customerPhone = customerRepository.findByPhone(registration.getPhone());
             Customer customerEmail = customerRepository.findByEmail(registration.getEmail());
             if (customerPhone == null && customerEmail == null) {
                 Customer customer = new Customer();
                 String passSha256 = Hashing.sha256()
                         .hashString(registration.getPassword(), StandardCharsets.UTF_8).toString();
-                customer.prepareForRegistration(registration.getUsername(), registration.getEmail(), passSha256);
+                customer.prepareForRegistration(registration.getPhone(), registration.getEmail(), passSha256);
                 customerRepository.save(customer);
                 httpServletResponse.setHeader("Location", "/customer/login");
             } else {
@@ -71,7 +71,7 @@ public class CustomerController {
     public void postLogin(@ModelAttribute Registration registration, HttpServletResponse httpServletResponse) {
         String passSha256 = Hashing.sha256()
                 .hashString(registration.getPassword(), StandardCharsets.UTF_8).toString();
-        Customer customer = customerRepository.findByPhoneAndPassword(registration.getUsername(), passSha256);
+        Customer customer = customerRepository.findByPhoneAndPassword(registration.getPhone(), passSha256);
         if (customer == null) {
             httpServletResponse.setHeader("Location", "/customer/login");
         } else {

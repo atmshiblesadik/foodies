@@ -1,17 +1,17 @@
 package com.shiblesadik.foodies.models.users;
 
 public class Registration {
-    private String username;
+    private String phone;
     private String email;
     private String password;
     private String confirmPassword;
 
-    public String getUsername() {
-        return username;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {
@@ -39,9 +39,9 @@ public class Registration {
     }
 
     public boolean isValidUsername() {
-        if (this.username.length() != 11) return false;
-        for (int i = 0; i < this.username.length(); ++i) {
-            if (this.username.charAt(i) < '0' || this.username.charAt(i) > '9') return false;
+        if (this.phone.length() != 11) return false;
+        for (int i = 0; i < this.phone.length(); ++i) {
+            if (this.phone.charAt(i) < '0' || this.phone.charAt(i) > '9') return false;
         }
         return true;
     }
@@ -60,7 +60,7 @@ public class Registration {
     @Override
     public String toString() {
         return "Registration{" +
-                "username='" + username + '\'' +
+                "username='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", confirmPassword='" + confirmPassword + '\'' +

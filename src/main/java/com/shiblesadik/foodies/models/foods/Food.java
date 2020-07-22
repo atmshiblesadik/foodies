@@ -1,5 +1,6 @@
 package com.shiblesadik.foodies.models.foods;
 
+import com.shiblesadik.foodies.models.restaurants.Restaurant;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,17 +11,22 @@ public class Food {
     private String name;
     private Double price;
     private String categoryId;
+    private Category category;
+    private String restaurantId;
+    private Restaurant restaurant;
     private String avatar;
     private String details;
 
     public Food() {
     }
 
-    public Food(String id, String name, Double price, String categoryId, String avatar, String details) {
+    public Food(String id, String name, Double price, String categoryId, String restaurantId, String avatar,
+                String details) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.categoryId = categoryId;
+        this.restaurantId = restaurantId;
         this.avatar = avatar;
         this.details = details;
     }
@@ -55,6 +61,14 @@ public class Food {
 
     public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public String getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(String restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
     public String getAvatar() {

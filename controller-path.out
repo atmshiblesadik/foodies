@@ -1,0 +1,43 @@
+index/home: "localhost:11111/",
+restaurants: {
+    all restaurants: "localhost:11111/restaurant/all",
+    view all restaurant by area code: "localhost:11111/restaurant/area/{areaCode}",
+    find restaurant by name: "localhost:11111/restaurant/find/{name}",
+    view single restaurant by id: "localhost:11111/restaurant/view/{id}",
+    view single restaurant's all foods: "localhost:11111/restaurant/view/{id}/foods",
+    view single restaurant's all categories: "localhost:11111/restaurant/view/{id}/category/all",
+    view single restaurant's foods by category id: "localhost:11111/restaurant/view/{id}/category/{categoryId}/foods",
+},
+categories: {
+    all categories: "localhost:11111/category/all",
+    find categories by name: "localhost:11111/category/find/{name}",
+    view single category: "localhost:11111/category/view/{id}",
+    view all restaurants by category id: "localhost:11111/category/view/{id}/restaurants",
+    view all foods by category id: "localhost:11111/category/view/{id}/foods",
+},
+foods: {
+    all foods: "localhost:11111/foods/all",
+    find foods by name: "localhost:11111/foods/find/{name}",
+    find foods by area code: "localhost:11111/foods/area/{areaCode}",
+},
+area: {
+
+},
+confirmation: {
+
+},
+review: {
+
+},
+complaint: {
+
+},
+customer: {
+
+},
+raider: {
+
+},
+admin: {
+
+}

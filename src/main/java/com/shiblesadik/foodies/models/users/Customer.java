@@ -1,7 +1,5 @@
 package com.shiblesadik.foodies.models.users;
 
-import com.shiblesadik.foodies.models.areas.Address;
-import com.shiblesadik.foodies.models.areas.Location;
 import com.shiblesadik.foodies.models.orders.Order;
 import com.shiblesadik.foodies.models.reviews.Complaint;
 import com.shiblesadik.foodies.models.reviews.Review;
@@ -11,38 +9,105 @@ import java.util.Arrays;
 
 @Document(collection = "customers")
 public class Customer extends User {
-    private Address[] addresses;
+    private boolean onOrder;
+    private String currentOrderId;
+    private Order currentOrder;
+    private String lastOrderId;
+    private Order lastOrder;
+    private Integer numberOfOrder;
+    private String[] ordersIds;
     private Order[] orders;
+    private String[] reviewsIds;
     private Review[] reviews;
+    private String[] complaintsIds;
     private Complaint[] complaints;
-    private String password;
-    private Location currentLocation;
 
     public Customer() {
     }
 
-    public Customer(String id, String name, String phone, String email, String avatar, String role, Location homeAddress,
-                    Address[] addresses, Order[] orders, Review[] reviews, Complaint[] complaints, Location currentLocation) {
-        super(id, name, phone, email, avatar, role, homeAddress);
-        this.addresses = addresses;
-        this.orders = orders;
-        this.reviews = reviews;
-        this.complaints = complaints;
-        this.currentLocation = currentLocation;
+    public Customer(String id, String name, String email, String[] phone, String avatar, String areaId, String areaCode,
+                    boolean onOrder, String currentOrderId, String lastOrderId, Integer numberOfOrder,
+                    String[] ordersIds, String[] reviewsIds, String[] complaintsIds) {
+        super(id, name, email, phone, avatar, areaId, areaCode);
+        this.onOrder = onOrder;
+        this.currentOrderId = currentOrderId;
+        this.lastOrderId = lastOrderId;
+        this.numberOfOrder = numberOfOrder;
+        this.ordersIds = ordersIds;
+        this.reviewsIds = reviewsIds;
+        this.complaintsIds = complaintsIds;
     }
 
-    public void prepareForRegistration(String username, String email, String password) {
-        this.setPhone(username);
-        this.setEmail(email);
-        this.password = password;
+    public boolean isOnOrder() {
+        return onOrder;
     }
 
-    public Address[] getAddresses() {
-        return addresses;
+    public void setOnOrder(boolean onOrder) {
+        this.onOrder = onOrder;
     }
 
-    public void setAddresses(Address[] addresses) {
-        this.addresses = addresses;
+    public String getCurrentOrderId() {
+        return currentOrderId;
+    }
+
+    public void setCurrentOrderId(String currentOrderId) {
+        this.currentOrderId = currentOrderId;
+    }
+
+    public String getLastOrderId() {
+        return lastOrderId;
+    }
+
+    public void setLastOrderId(String lastOrderId) {
+        this.lastOrderId = lastOrderId;
+    }
+
+    public Integer getNumberOfOrder() {
+        return numberOfOrder;
+    }
+
+    public void setNumberOfOrder(Integer numberOfOrder) {
+        this.numberOfOrder = numberOfOrder;
+    }
+
+    public String[] getOrdersIds() {
+        return ordersIds;
+    }
+
+    public void setOrdersIds(String[] ordersIds) {
+        this.ordersIds = ordersIds;
+    }
+
+    public String[] getReviewsIds() {
+        return reviewsIds;
+    }
+
+    public void setReviewsIds(String[] reviewsIds) {
+        this.reviewsIds = reviewsIds;
+    }
+
+    public String[] getComplaintsIds() {
+        return complaintsIds;
+    }
+
+    public void setComplaintsIds(String[] complaintsIds) {
+        this.complaintsIds = complaintsIds;
+    }
+
+    public Order getCurrentOrder() {
+        return currentOrder;
+    }
+
+    public void setCurrentOrder(Order currentOrder) {
+        this.currentOrder = currentOrder;
+    }
+
+    public Order getLastOrder() {
+        return lastOrder;
+    }
+
+    public void setLastOrder(Order lastOrder) {
+        this.lastOrder = lastOrder;
     }
 
     public Order[] getOrders() {
@@ -69,23 +134,21 @@ public class Customer extends User {
         this.complaints = complaints;
     }
 
-    public Location getCurrentLocation() {
-        return currentLocation;
-    }
-
-    public void setCurrentLocation(Location currentLocation) {
-        this.currentLocation = currentLocation;
-    }
-
     @Override
     public String toString() {
         return "Customer{" +
-                super.toString() + " " +
-                "addresses=" + Arrays.toString(addresses) +
+                "onOrder=" + onOrder +
+                ", currentOrderId='" + currentOrderId + '\'' +
+                ", currentOrder=" + currentOrder +
+                ", lastOrderId='" + lastOrderId + '\'' +
+                ", lastOrder=" + lastOrder +
+                ", numberOfOrder=" + numberOfOrder +
+                ", ordersIds=" + Arrays.toString(ordersIds) +
                 ", orders=" + Arrays.toString(orders) +
+                ", reviewsIds=" + Arrays.toString(reviewsIds) +
                 ", reviews=" + Arrays.toString(reviews) +
+                ", complaintsIds=" + Arrays.toString(complaintsIds) +
                 ", complaints=" + Arrays.toString(complaints) +
-                ", currentLocation=" + currentLocation +
                 '}';
     }
 }
