@@ -1,6 +1,5 @@
 package com.shiblesadik.foodies.models.foods;
 
-import com.shiblesadik.foodies.models.restaurants.Restaurant;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,21 +8,19 @@ import java.util.Arrays;
 @Document(collection = "categories")
 public class Category {
     @Id
-    private String id;
+    private Integer id;
     private String name;
     private String details;
     private String avatar;
     private Integer numberOfFoods;
     private Integer numberOfRestaurants;
-    private String[] foodsIds;
-    private Food[] foods;
-    private String[] restaurantsIds;
-    private Restaurant[] restaurants;
+    private Integer[] foodsIds;
+    private Integer[] restaurantsIds;
 
     public Category() {
     }
 
-    public Category(String id, String name, String details, String avatar, Integer numberOfRestaurants, Integer numberOfFoods) {
+    public Category(Integer id, String name, String details, String avatar, Integer numberOfRestaurants, Integer numberOfFoods) {
         this.id = id;
         this.name = name;
         this.details = details;
@@ -32,11 +29,11 @@ public class Category {
         this.numberOfFoods = numberOfFoods;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -80,19 +77,19 @@ public class Category {
         this.numberOfFoods = numberOfFoods;
     }
 
-    public String[] getFoodsIds() {
+    public Integer[] getFoodsIds() {
         return foodsIds;
     }
 
-    public void setFoodsIds(String[] foodsIds) {
+    public void setFoodsIds(Integer[] foodsIds) {
         this.foodsIds = foodsIds;
     }
 
-    public String[] getRestaurantsIds() {
+    public Integer[] getRestaurantsIds() {
         return restaurantsIds;
     }
 
-    public void setRestaurantsIds(String[] restaurantsIds) {
+    public void setRestaurantsIds(Integer[] restaurantsIds) {
         this.restaurantsIds = restaurantsIds;
     }
 

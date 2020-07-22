@@ -1,85 +1,74 @@
 package com.shiblesadik.foodies.models.orders;
 
-import com.shiblesadik.foodies.models.datetime.DateTime;
+import java.util.TimeZone;
 
 public class OrderProcessing {
-    private DateTime orderPlaced;
-    private DateTime raiderReceiveOrder;
-    private DateTime restaurantReceiveOrder;
-    private DateTime foodComplete;
-    private DateTime raiderReceiveFood;
-    private DateTime orderDelivery;
+    private TimeZone customerPlaceOrder;
+    private TimeZone restaurantReceiveOrder;
+    private TimeZone raiderReceiveOrder;
+    private TimeZone raiderReceiveFoods;
+    private TimeZone customerReceiveOrder;
 
     public OrderProcessing() {
     }
 
-    public OrderProcessing(DateTime orderPlaced, DateTime raiderReceiveOrder, DateTime restaurantReceiveOrder,
-                           DateTime foodComplete, DateTime raiderReceiveFood, DateTime orderDelivery) {
-        this.orderPlaced = orderPlaced;
-        this.raiderReceiveOrder = raiderReceiveOrder;
+    public OrderProcessing(TimeZone customerPlaceOrder, TimeZone restaurantReceiveOrder, TimeZone raiderReceiveOrder,
+                           TimeZone raiderReceiveFoods, TimeZone customerReceiveOrder) {
+        this.customerPlaceOrder = customerPlaceOrder;
         this.restaurantReceiveOrder = restaurantReceiveOrder;
-        this.foodComplete = foodComplete;
-        this.raiderReceiveFood = raiderReceiveFood;
-        this.orderDelivery = orderDelivery;
-    }
-
-    public DateTime getOrderPlaced() {
-        return orderPlaced;
-    }
-
-    public void setOrderPlaced(DateTime orderPlaced) {
-        this.orderPlaced = orderPlaced;
-    }
-
-    public DateTime getRaiderReceiveOrder() {
-        return raiderReceiveOrder;
-    }
-
-    public void setRaiderReceiveOrder(DateTime raiderReceiveOrder) {
         this.raiderReceiveOrder = raiderReceiveOrder;
+        this.raiderReceiveFoods = raiderReceiveFoods;
+        this.customerReceiveOrder = customerReceiveOrder;
     }
 
-    public DateTime getRestaurantReceiveOrder() {
+    public TimeZone getCustomerPlaceOrder() {
+        return customerPlaceOrder;
+    }
+
+    public void setCustomerPlaceOrder(TimeZone customerPlaceOrder) {
+        this.customerPlaceOrder = customerPlaceOrder;
+    }
+
+    public TimeZone getRestaurantReceiveOrder() {
         return restaurantReceiveOrder;
     }
 
-    public void setRestaurantReceiveOrder(DateTime restaurantReceiveOrder) {
+    public void setRestaurantReceiveOrder(TimeZone restaurantReceiveOrder) {
         this.restaurantReceiveOrder = restaurantReceiveOrder;
     }
 
-    public DateTime getFoodComplete() {
-        return foodComplete;
+    public TimeZone getRaiderReceiveOrder() {
+        return raiderReceiveOrder;
     }
 
-    public void setFoodComplete(DateTime foodComplete) {
-        this.foodComplete = foodComplete;
+    public void setRaiderReceiveOrder(TimeZone raiderReceiveOrder) {
+        this.raiderReceiveOrder = raiderReceiveOrder;
     }
 
-    public DateTime getRaiderReceiveFood() {
-        return raiderReceiveFood;
+    public TimeZone getRaiderReceiveFoods() {
+        return raiderReceiveFoods;
     }
 
-    public void setRaiderReceiveFood(DateTime raiderReceiveFood) {
-        this.raiderReceiveFood = raiderReceiveFood;
+    public void setRaiderReceiveFoods(TimeZone raiderReceiveFoods) {
+        this.raiderReceiveFoods = raiderReceiveFoods;
     }
 
-    public DateTime getOrderDelivery() {
-        return orderDelivery;
+    public TimeZone getCustomerReceiveOrder() {
+        return customerReceiveOrder;
     }
 
-    public void setOrderDelivery(DateTime orderDelivery) {
-        this.orderDelivery = orderDelivery;
+    public void setCustomerReceiveOrder(TimeZone customerReceiveOrder) {
+        this.customerReceiveOrder = customerReceiveOrder;
     }
 
     @Override
     public String toString() {
         return "OrderProcessing{" +
-                "orderPlaced=" + orderPlaced +
-                ", raiderReceiveOrder=" + raiderReceiveOrder +
+                "customerPlaceOrder=" + customerPlaceOrder +
                 ", restaurantReceiveOrder=" + restaurantReceiveOrder +
-                ", foodComplete=" + foodComplete +
-                ", raiderReceiveFood=" + raiderReceiveFood +
-                ", orderDelivery=" + orderDelivery +
+                ", raiderReceiveOrder=" + raiderReceiveOrder +
+                ", raiderReceiveFoods=" + raiderReceiveFoods +
+                ", customerReceiveOrder=" + customerReceiveOrder +
                 '}';
     }
 }

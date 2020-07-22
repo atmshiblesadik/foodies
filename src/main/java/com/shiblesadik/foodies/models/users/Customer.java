@@ -1,34 +1,31 @@
 package com.shiblesadik.foodies.models.users;
 
+import com.shiblesadik.foodies.models.areas.Address;
 import com.shiblesadik.foodies.models.orders.Order;
-import com.shiblesadik.foodies.models.reviews.Complaint;
-import com.shiblesadik.foodies.models.reviews.Review;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Arrays;
 
 @Document(collection = "customers")
 public class Customer extends User {
+    private Address address;
     private boolean onOrder;
-    private String currentOrderId;
+    private Integer currentOrderId;
     private Order currentOrder;
-    private String lastOrderId;
+    private Integer lastOrderId;
     private Order lastOrder;
     private Integer numberOfOrder;
-    private String[] ordersIds;
-    private Order[] orders;
-    private String[] reviewsIds;
-    private Review[] reviews;
-    private String[] complaintsIds;
-    private Complaint[] complaints;
+    private Integer[] ordersIds;
+    private Integer[] reviewsIds;
+    private Integer[] complaintsIds;
 
     public Customer() {
     }
 
-    public Customer(String id, String name, String email, String[] phone, String avatar, String areaId, String areaCode,
-                    boolean onOrder, String currentOrderId, String lastOrderId, Integer numberOfOrder,
-                    String[] ordersIds, String[] reviewsIds, String[] complaintsIds) {
-        super(id, name, email, phone, avatar, areaId, areaCode);
+    public Customer(Integer id, String name, String email, String[] phone, String avatar, Integer areaId,
+                    boolean onOrder, Integer currentOrderId, Integer lastOrderId, Integer numberOfOrder,
+                    Integer[] ordersIds, Integer[] reviewsIds, Integer[] complaintsIds) {
+        super(id, name, email, phone, avatar, areaId);
         this.onOrder = onOrder;
         this.currentOrderId = currentOrderId;
         this.lastOrderId = lastOrderId;
@@ -36,6 +33,14 @@ public class Customer extends User {
         this.ordersIds = ordersIds;
         this.reviewsIds = reviewsIds;
         this.complaintsIds = complaintsIds;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public boolean isOnOrder() {
@@ -46,19 +51,19 @@ public class Customer extends User {
         this.onOrder = onOrder;
     }
 
-    public String getCurrentOrderId() {
+    public Integer getCurrentOrderId() {
         return currentOrderId;
     }
 
-    public void setCurrentOrderId(String currentOrderId) {
+    public void setCurrentOrderId(Integer currentOrderId) {
         this.currentOrderId = currentOrderId;
     }
 
-    public String getLastOrderId() {
+    public Integer getLastOrderId() {
         return lastOrderId;
     }
 
-    public void setLastOrderId(String lastOrderId) {
+    public void setLastOrderId(Integer lastOrderId) {
         this.lastOrderId = lastOrderId;
     }
 
@@ -70,27 +75,27 @@ public class Customer extends User {
         this.numberOfOrder = numberOfOrder;
     }
 
-    public String[] getOrdersIds() {
+    public Integer[] getOrdersIds() {
         return ordersIds;
     }
 
-    public void setOrdersIds(String[] ordersIds) {
+    public void setOrdersIds(Integer[] ordersIds) {
         this.ordersIds = ordersIds;
     }
 
-    public String[] getReviewsIds() {
+    public Integer[] getReviewsIds() {
         return reviewsIds;
     }
 
-    public void setReviewsIds(String[] reviewsIds) {
+    public void setReviewsIds(Integer[] reviewsIds) {
         this.reviewsIds = reviewsIds;
     }
 
-    public String[] getComplaintsIds() {
+    public Integer[] getComplaintsIds() {
         return complaintsIds;
     }
 
-    public void setComplaintsIds(String[] complaintsIds) {
+    public void setComplaintsIds(Integer[] complaintsIds) {
         this.complaintsIds = complaintsIds;
     }
 
@@ -110,33 +115,10 @@ public class Customer extends User {
         this.lastOrder = lastOrder;
     }
 
-    public Order[] getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Order[] orders) {
-        this.orders = orders;
-    }
-
-    public Review[] getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(Review[] reviews) {
-        this.reviews = reviews;
-    }
-
-    public Complaint[] getComplaints() {
-        return complaints;
-    }
-
-    public void setComplaints(Complaint[] complaints) {
-        this.complaints = complaints;
-    }
-
     @Override
     public String toString() {
         return "Customer{" +
+                "address=" + address.toString() +
                 "onOrder=" + onOrder +
                 ", currentOrderId='" + currentOrderId + '\'' +
                 ", currentOrder=" + currentOrder +
@@ -144,11 +126,8 @@ public class Customer extends User {
                 ", lastOrder=" + lastOrder +
                 ", numberOfOrder=" + numberOfOrder +
                 ", ordersIds=" + Arrays.toString(ordersIds) +
-                ", orders=" + Arrays.toString(orders) +
                 ", reviewsIds=" + Arrays.toString(reviewsIds) +
-                ", reviews=" + Arrays.toString(reviews) +
                 ", complaintsIds=" + Arrays.toString(complaintsIds) +
-                ", complaints=" + Arrays.toString(complaints) +
                 '}';
     }
 }

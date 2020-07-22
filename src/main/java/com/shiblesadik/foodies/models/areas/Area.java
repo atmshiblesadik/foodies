@@ -1,8 +1,12 @@
 package com.shiblesadik.foodies.models.areas;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "areas")
 public class Area {
-    private String id;
-    private Integer code;
+    @Id
+    private Integer id; // id = area code
     private String name;
     private String city;
     private Integer numberOfRestaurants;
@@ -13,10 +17,15 @@ public class Area {
     public Area() {
     }
 
-    public Area(String id, Integer code, String name, String city, Integer numberOfRestaurants, Integer numberOfRaider,
+    public Area(Integer id, String name, String city) {
+        this.id = id;
+        this.name = name;
+        this.city = city;
+    }
+
+    public Area(Integer id, String name, String city, Integer numberOfRestaurants, Integer numberOfRaider,
                 Integer numberOfCustomer, Integer numberOfAdmin) {
         this.id = id;
-        this.code = code;
         this.name = name;
         this.city = city;
         this.numberOfRestaurants = numberOfRestaurants;
@@ -25,20 +34,12 @@ public class Area {
         this.numberOfAdmin = numberOfAdmin;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
     }
 
     public String getName() {
@@ -93,7 +94,6 @@ public class Area {
     public String toString() {
         return "Area{" +
                 "id='" + id + '\'' +
-                ", code=" + code +
                 ", name='" + name + '\'' +
                 ", city='" + city + '\'' +
                 ", numberOfRestaurants=" + numberOfRestaurants +

@@ -1,11 +1,5 @@
 package com.shiblesadik.foodies.models.restaurants;
 
-import com.shiblesadik.foodies.models.areas.Area;
-import com.shiblesadik.foodies.models.foods.Category;
-import com.shiblesadik.foodies.models.foods.Food;
-import com.shiblesadik.foodies.models.orders.Order;
-import com.shiblesadik.foodies.models.reviews.Complaint;
-import com.shiblesadik.foodies.models.reviews.Review;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,34 +8,27 @@ import java.util.Arrays;
 @Document(collection = "restaurants")
 public class Restaurant {
     @Id
-    private String id;
+    private Integer id;
     private String name;
     private String email;
     private String[] phones;
     private String avatar;
-    private String areaId;
-    private String areaCode;
-    private Area area;
+    private Integer areaId;
     private Double rating;
     private Integer numberOfFoods;
     private Integer numberOfCategories;
     private Integer numberOfOrders;
     private String[] foodsIds;
-    private Food[] foods;
     private String[] categoriesIds;
-    private Category[] categories;
     private String[] ordersIds;
-    private Order[] orders;
     private String[] reviewsIds;
-    private Review[] reviews;
     private String[] complaintsIds;
-    private Complaint[] complaints;
 
     public Restaurant() {
     }
 
-    public Restaurant(String id, String name, String email, String[] phones, String avatar, String areaId,
-                      String areaCode, Double rating, Integer numberOfFoods, Integer numberOfCategories,
+    public Restaurant(Integer id, String name, String email, String[] phones, String avatar, Integer areaId,
+                      Double rating, Integer numberOfFoods, Integer numberOfCategories,
                       Integer numberOfOrders, String[] foodsIds, String[] categoriesIds, String[] ordersIds,
                       String[] reviewsIds, String[] complaintsIds) {
         this.id = id;
@@ -50,7 +37,6 @@ public class Restaurant {
         this.phones = phones;
         this.avatar = avatar;
         this.areaId = areaId;
-        this.areaCode = areaCode;
         this.rating = rating;
         this.numberOfFoods = numberOfFoods;
         this.numberOfCategories = numberOfCategories;
@@ -62,11 +48,11 @@ public class Restaurant {
         this.complaintsIds = complaintsIds;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -102,20 +88,12 @@ public class Restaurant {
         this.avatar = avatar;
     }
 
-    public String getAreaId() {
+    public Integer getAreaId() {
         return areaId;
     }
 
-    public void setAreaId(String areaId) {
+    public void setAreaId(Integer areaId) {
         this.areaId = areaId;
-    }
-
-    public String getAreaCode() {
-        return areaCode;
-    }
-
-    public void setAreaCode(String areaCode) {
-        this.areaCode = areaCode;
     }
 
     public Double getRating() {
@@ -190,54 +168,6 @@ public class Restaurant {
         this.complaintsIds = complaintsIds;
     }
 
-    public Area getArea() {
-        return area;
-    }
-
-    public void setArea(Area area) {
-        this.area = area;
-    }
-
-    public Food[] getFoods() {
-        return foods;
-    }
-
-    public void setFoods(Food[] foods) {
-        this.foods = foods;
-    }
-
-    public Category[] getCategories() {
-        return categories;
-    }
-
-    public void setCategories(Category[] categories) {
-        this.categories = categories;
-    }
-
-    public Order[] getOrders() {
-        return orders;
-    }
-
-    public void setOrders(Order[] orders) {
-        this.orders = orders;
-    }
-
-    public Review[] getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(Review[] reviews) {
-        this.reviews = reviews;
-    }
-
-    public Complaint[] getComplaints() {
-        return complaints;
-    }
-
-    public void setComplaints(Complaint[] complaints) {
-        this.complaints = complaints;
-    }
-
     @Override
     public String toString() {
         return "Restaurant{" +
@@ -247,7 +177,6 @@ public class Restaurant {
                 ", phones=" + Arrays.toString(phones) +
                 ", avatar='" + avatar + '\'' +
                 ", areaId='" + areaId + '\'' +
-                ", areaCode='" + areaCode + '\'' +
                 ", rating=" + rating +
                 ", numberOfFoods=" + numberOfFoods +
                 ", numberOfCategories=" + numberOfCategories +

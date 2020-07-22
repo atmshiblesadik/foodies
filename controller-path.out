@@ -21,7 +21,11 @@ foods: {
     find foods by area code: "localhost:11111/foods/area/{areaCode}",
 },
 area: {
-
+    all area: "localhost:11111/area/all",
+    find area by name: "localhost:11111/area/find/{name}",
+    view area by id: "localhost:11111/area/view/{id}",
+    all foods by area: "localhost:11111/area/view/{id}/foods",
+    all restaurants by area: "localhost:11111/area/view/{id}/restaurant/all",
 },
 confirmation: {
 
@@ -40,4 +44,17 @@ raider: {
 },
 admin: {
 
+},
+authentication: {
+    customer registration: "localhost:11111/auth/registration/customer",
+    raider registration: "localhost:11111/auth/registration/raider",
+    restaurant registration: "localhost:11111/auth/registration/restaurant",
+    admin registration: "localhost:11111/auth/registration/admin",
+
+    customer login: "localhost:11111/auth/login/customer",
+    raider login: "localhost:11111/auth/login/raider",
+    restaurant login: "localhost:11111/auth/login/restaurant",
+    admin login: "localhost:11111/auth/login/admin",
+
+    all logout: "localhost:11111/auth/logout"
 }

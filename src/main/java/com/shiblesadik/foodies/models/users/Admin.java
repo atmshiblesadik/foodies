@@ -1,6 +1,5 @@
 package com.shiblesadik.foodies.models.users;
 
-import com.shiblesadik.foodies.models.reviews.Complaint;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Arrays;
@@ -8,15 +7,14 @@ import java.util.Arrays;
 @Document(collection = "admins")
 public class Admin extends User {
     private Integer numberOfComplaint;
-    private String[] complaintsIds;
-    private Complaint[] complaints;
+    private Integer[] complaintsIds;
 
     public Admin() {
     }
 
-    public Admin(String id, String name, String email, String[] phone, String avatar, String areaId, String areaCode,
-                 Integer numberOfComplaint, String[] complaintsIds) {
-        super(id, name, email, phone, avatar, areaId, areaCode);
+    public Admin(Integer id, String name, String email, String[] phone, String avatar, Integer areaId,
+                 Integer numberOfComplaint, Integer[] complaintsIds) {
+        super(id, name, email, phone, avatar, areaId);
         this.numberOfComplaint = numberOfComplaint;
         this.complaintsIds = complaintsIds;
     }
@@ -29,11 +27,11 @@ public class Admin extends User {
         this.numberOfComplaint = numberOfComplaint;
     }
 
-    public String[] getComplaintsIds() {
+    public Integer[] getComplaintsIds() {
         return complaintsIds;
     }
 
-    public void setComplaintsIds(String[] complaintsIds) {
+    public void setComplaintsIds(Integer[] complaintsIds) {
         this.complaintsIds = complaintsIds;
     }
 
@@ -42,7 +40,6 @@ public class Admin extends User {
         return "Admin{" +
                 "numberOfComplaint=" + numberOfComplaint +
                 ", complaintsIds=" + Arrays.toString(complaintsIds) +
-                ", complaints=" + Arrays.toString(complaints) +
                 '}';
     }
 }

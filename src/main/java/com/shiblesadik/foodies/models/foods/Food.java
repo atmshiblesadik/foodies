@@ -1,41 +1,40 @@
 package com.shiblesadik.foodies.models.foods;
 
-import com.shiblesadik.foodies.models.restaurants.Restaurant;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "foods")
 public class Food {
     @Id
-    private String id;
+    private Integer id;
     private String name;
     private Double price;
-    private String categoryId;
-    private Category category;
-    private String restaurantId;
-    private Restaurant restaurant;
+    private Integer categoryId;
+    private Integer areaId;
+    private Integer restaurantId;
     private String avatar;
     private String details;
 
     public Food() {
     }
 
-    public Food(String id, String name, Double price, String categoryId, String restaurantId, String avatar,
-                String details) {
+    public Food(Integer id, String name, Double price, Integer categoryId, Integer areaId, Integer restaurantId,
+                String avatar, String details) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.categoryId = categoryId;
+        this.areaId = areaId;
         this.restaurantId = restaurantId;
         this.avatar = avatar;
         this.details = details;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -55,19 +54,27 @@ public class Food {
         this.price = price;
     }
 
-    public String getCategoryId() {
+    public Integer getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(String categoryId) {
+    public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
     }
 
-    public String getRestaurantId() {
+    public Integer getAreaId() {
+        return areaId;
+    }
+
+    public void setAreaId(Integer areaId) {
+        this.areaId = areaId;
+    }
+
+    public Integer getRestaurantId() {
         return restaurantId;
     }
 
-    public void setRestaurantId(String restaurantId) {
+    public void setRestaurantId(Integer restaurantId) {
         this.restaurantId = restaurantId;
     }
 
