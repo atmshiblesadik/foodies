@@ -8,7 +8,7 @@ public class Area {
     @Id
     private String id; // id = area code
     private String name;
-    private String city;
+    private String cityId;
     private Integer numberOfRestaurants;
     private Integer numberOfRaider;
     private Integer numberOfCustomer;
@@ -17,17 +17,17 @@ public class Area {
     public Area() {
     }
 
-    public Area(String id, String name, String city) {
+    public Area(String id, String name, String cityId) {
         this.id = id;
         this.name = name;
-        this.city = city;
+        this.cityId = cityId;
     }
 
-    public Area(String id, String name, String city, Integer numberOfRestaurants, Integer numberOfRaider,
+    public Area(String id, String name, String cityId, Integer numberOfRestaurants, Integer numberOfRaider,
                 Integer numberOfCustomer, Integer numberOfAdmin) {
         this.id = id;
         this.name = name;
-        this.city = city;
+        this.cityId = cityId;
         this.numberOfRestaurants = numberOfRestaurants;
         this.numberOfRaider = numberOfRaider;
         this.numberOfCustomer = numberOfCustomer;
@@ -50,12 +50,12 @@ public class Area {
         this.name = name;
     }
 
-    public String getCity() {
-        return city;
+    public String getCityId() {
+        return cityId;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
     }
 
     public Integer getNumberOfRestaurants() {
@@ -95,7 +95,7 @@ public class Area {
         return "Area{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", city='" + city + '\'' +
+                ", cityId='" + cityId + '\'' +
                 ", numberOfRestaurants=" + numberOfRestaurants +
                 ", numberOfRaider=" + numberOfRaider +
                 ", numberOfCustomer=" + numberOfCustomer +

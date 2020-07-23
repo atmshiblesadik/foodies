@@ -11,7 +11,13 @@ public class Restaurant {
     private String id;
     private String name;
     private String email;
+    private String phone;
+    private String password;
+    private String confirmPassword;
     private String[] phones;
+    private String openingTime;
+    private String closingTime;
+    private boolean open;
     private String avatar;
     private String areaId;
     private Double rating;
@@ -27,14 +33,18 @@ public class Restaurant {
     public Restaurant() {
     }
 
-    public Restaurant(String id, String name, String email, String[] phones, String avatar, String areaId,
-                      Double rating, String numberOfFoods, String numberOfCategories,
-                      String numberOfOrders, String[] foodsIds, String[] categoriesIds, String[] ordersIds,
-                      String[] reviewsIds, String[] complaintsIds) {
+    public Restaurant(String id, String name, String email, String phone, String[] phones, String openingTime,
+                      String closingTime, boolean open, String avatar, String areaId, Double rating,
+                      String numberOfFoods, String numberOfCategories, String numberOfOrders, String[] foodsIds,
+                      String[] categoriesIds, String[] ordersIds, String[] reviewsIds, String[] complaintsIds) {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.phone = phone;
         this.phones = phones;
+        this.openingTime = openingTime;
+        this.closingTime = closingTime;
+        this.open = open;
         this.avatar = avatar;
         this.areaId = areaId;
         this.rating = rating;
@@ -72,12 +82,60 @@ public class Restaurant {
         this.email = email;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
     public String[] getPhones() {
         return phones;
     }
 
     public void setPhones(String[] phones) {
         this.phones = phones;
+    }
+
+    public String getOpeningTime() {
+        return openingTime;
+    }
+
+    public void setOpeningTime(String openingTime) {
+        this.openingTime = openingTime;
+    }
+
+    public String getClosingTime() {
+        return closingTime;
+    }
+
+    public void setClosingTime(String closingTime) {
+        this.closingTime = closingTime;
+    }
+
+    public boolean isOpen() {
+        return open;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
     }
 
     public String getAvatar() {
@@ -175,12 +233,15 @@ public class Restaurant {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", phones=" + Arrays.toString(phones) +
+                ", openingTime='" + openingTime + '\'' +
+                ", closingTime='" + closingTime + '\'' +
+                ", open=" + open +
                 ", avatar='" + avatar + '\'' +
                 ", areaId='" + areaId + '\'' +
                 ", rating=" + rating +
-                ", numberOfFoods=" + numberOfFoods +
-                ", numberOfCategories=" + numberOfCategories +
-                ", numberOfOrders=" + numberOfOrders +
+                ", numberOfFoods='" + numberOfFoods + '\'' +
+                ", numberOfCategories='" + numberOfCategories + '\'' +
+                ", numberOfOrders='" + numberOfOrders + '\'' +
                 ", foodsIds=" + Arrays.toString(foodsIds) +
                 ", categoriesIds=" + Arrays.toString(categoriesIds) +
                 ", ordersIds=" + Arrays.toString(ordersIds) +

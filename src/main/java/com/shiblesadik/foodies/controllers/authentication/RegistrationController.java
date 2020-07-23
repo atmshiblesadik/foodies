@@ -2,6 +2,7 @@ package com.shiblesadik.foodies.controllers.authentication;
 
 import com.google.common.hash.Hashing;
 import com.shiblesadik.foodies.models.areas.Area;
+import com.shiblesadik.foodies.models.restaurants.Restaurant;
 import com.shiblesadik.foodies.models.users.Customer;
 import com.shiblesadik.foodies.models.users.UserRegistrationModel;
 import com.shiblesadik.foodies.repositories.areas.AreaRepository;
@@ -51,9 +52,9 @@ public class RegistrationController {
             userRegistrationModel.setPassword(passSha256);
             userRegistrationModel.setConfirmPassword(null);
             Customer customer = new Customer();
-            customer.preparedForRegistration(userRegistrationModel);;
+            customer.preparedForRegistration(userRegistrationModel);
             customerRepository.save(customer);
-            System.out.println("Customer Registration Successfully: " + customer.toString());
+            System.out.println("Customer Registration Successfully");
             httpServletResponse.setHeader("Location", "/auth/login/customer");
         } else {
             System.out.println("Phone Number Already Used");
@@ -70,6 +71,39 @@ public class RegistrationController {
     /* Admins */
 
     /* Restaurants */
+    @GetMapping("/restaurant")
+    public String restaurantRegistrationGetRequest(Model model) {
+        List<Area> areaList = areaRepository.findAll();
+        model.addAttribute("registration", new Restaurant());
+        model.addAttribute("title", "Restaurant Registration");
+        model.addAttribute("id", "restaurant-registration");
+        model.addAttribute("action", "/auth/registration/restaurant");
+        model.addAttribute("login", "/auth/login/restaurant");
+        model.addAttribute(areaList);
+        System.out.println("area list: " + areaList);
+        return "restaurant";
+    }
+
+    @PostMapping("/restaurant")
+    public void customerRegistrationPostRequest(@ModelAttribute Restaurant restaurant,
+                                                HttpServletResponse httpServletResponse) {
+        boolean alreadyExists = true;
+        if (!alreadyExists) {
+//            String passSha256 = Hashing.sha256()
+//                    .hashString(userRegistrationModel.getPassword(), StandardCharsets.UTF_8).toString();
+//            userRegistrationModel.setPassword(passSha256);
+//            userRegistrationModel.setConfirmPassword(null);
+//            Customer customer = new Customer();
+//            customer.preparedForRegistration(userRegistrationModel);
+//            customerRepository.save(customer);
+            System.out.println("Restaurant Registration Successfully");
+            httpServletResponse.setHeader("Location", "/auth/login/restaurant");
+        } else {
+            System.out.println("Phone Number Already Used");
+            httpServletResponse.setHeader("Location", "/auth/registration/restaurant");
+        }
+        httpServletResponse.setStatus(302);
+    }
     /* Restaurants */
 
     /* Categories */
@@ -87,7 +121,7 @@ public class RegistrationController {
     /* Complaints */
     /* Complaints */
 
-    /* Area */
+    /* Areas */
     @GetMapping("/area")
     public String areaRegistrationGetRequest(Model model) {
         model.addAttribute("registration", new Area());
@@ -99,23 +133,27 @@ public class RegistrationController {
 
     @PostMapping("/area")
     public void areaRegistrationPostRequest(@ModelAttribute Area area, HttpServletResponse httpServletResponse) {
-        List<Area> areas = areaRepository.findAllByCity(area.getCity());
-        boolean alreadyExists = false;
-        for (Area a: areas) {
-            if (a.getName().toLowerCase().equals(area.getName().toLowerCase())) {
-                alreadyExists = true;
-                break;
-            }
-        }
-        if (!alreadyExists) {
-            areaRepository.save(area);
-            System.out.println("Area Insert Successfully: " + area.toString());
-            httpServletResponse.setHeader("Location", "/");
-        } else {
-            System.out.println("Already Exists This Area");
-            httpServletResponse.setHeader("Location", "/auth/registration/area");
-        }
-        httpServletResponse.setStatus(302);
+//        List<Area> areas = areaRepository.findAllByCity(area.getCity());
+//        boolean alreadyExists = false;
+//        for (Area a: areas) {
+//            if (a.getName().toLowerCase().equals(area.getName().toLowerCase())) {
+//                alreadyExists = true;
+//                break;
+//            }
+//        }
+//        if (!alreadyExists) {
+//            areaRepository.save(area);
+//            System.out.println("Area Insert Successfully: " + area.toString());
+//            httpServletResponse.setHeader("Location", "/");
+//        } else {
+//            System.out.println("Already Exists This Area");
+//            httpServletResponse.setHeader("Location", "/auth/registration/area");
+//        }
+//        httpServletResponse.setStatus(302);
     }
-    /* Area */
+    /* Areas */
+
+    /* Cities */
+
+    /* Cities */
 }
