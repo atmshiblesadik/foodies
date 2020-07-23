@@ -9,18 +9,18 @@ public class Raider extends User {
     private Double rating;
     private boolean available;
     private boolean onDuty;
-    private Integer numberOfOrder;
-    private Integer[] ordersIds;
-    private Integer[] reviewsIds;
-    private Integer[] complaintsIds;
-    private Integer lastOrderId;
+    private String numberOfOrder;
+    private String[] ordersIds;
+    private String[] reviewsIds;
+    private String[] complaintsIds;
+    private String lastOrderId;
 
     public Raider() {
     }
 
-    public Raider(Integer id, String name, String email, String[] phone, String avatar, Integer areaId,
-                  Double rating, boolean available, boolean onDuty, Integer numberOfOrder, Integer[] ordersIds,
-                  Integer[] reviewsIds, Integer[] complaintsIds, Integer lastOrderId) {
+    public Raider(String id, String name, String email, String phone, String avatar, String areaId,
+                  Double rating, boolean available, boolean onDuty, String numberOfOrder, String[] ordersIds,
+                  String[] reviewsIds, String[] complaintsIds, String lastOrderId) {
         super(id, name, email, phone, avatar, areaId);
         this.rating = rating;
         this.available = available;
@@ -56,43 +56,43 @@ public class Raider extends User {
         this.onDuty = onDuty;
     }
 
-    public Integer getNumberOfOrder() {
+    public String getNumberOfOrder() {
         return numberOfOrder;
     }
 
-    public void setNumberOfOrder(Integer numberOfOrder) {
+    public void setNumberOfOrder(String numberOfOrder) {
         this.numberOfOrder = numberOfOrder;
     }
 
-    public Integer[] getOrdersIds() {
+    public String[] getOrdersIds() {
         return ordersIds;
     }
 
-    public void setOrdersIds(Integer[] ordersIds) {
+    public void setOrdersIds(String[] ordersIds) {
         this.ordersIds = ordersIds;
     }
 
-    public Integer[] getReviewsIds() {
+    public String[] getReviewsIds() {
         return reviewsIds;
     }
 
-    public void setReviewsIds(Integer[] reviewsIds) {
+    public void setReviewsIds(String[] reviewsIds) {
         this.reviewsIds = reviewsIds;
     }
 
-    public Integer[] getComplaintsIds() {
+    public String[] getComplaintsIds() {
         return complaintsIds;
     }
 
-    public void setComplaintsIds(Integer[] complaintsIds) {
+    public void setComplaintsIds(String[] complaintsIds) {
         this.complaintsIds = complaintsIds;
     }
 
-    public Integer getLastOrderId() {
+    public String getLastOrderId() {
         return lastOrderId;
     }
 
-    public void setLastOrderId(Integer lastOrderId) {
+    public void setLastOrderId(String lastOrderId) {
         this.lastOrderId = lastOrderId;
     }
 

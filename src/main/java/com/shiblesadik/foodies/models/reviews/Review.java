@@ -9,8 +9,8 @@ public class Review extends Investigate {
     public Review() {
     }
 
-    public Review(Integer id, Integer customerId, Integer raiderId, Integer restaurantId,
-                  Integer orderId, Integer details, Double rating) {
+    public Review(String id, String customerId, String raiderId, String restaurantId,
+                  String orderId, String details, Double rating) {
         super(id, customerId, raiderId, restaurantId, orderId, details);
         this.rating = rating;
     }

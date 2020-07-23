@@ -50,6 +50,10 @@ authentication: {
     raider registration: "localhost:11111/auth/registration/raider",
     restaurant registration: "localhost:11111/auth/registration/restaurant",
     admin registration: "localhost:11111/auth/registration/admin",
+    area registration: "localhost:11111/auth/registration/area",
+    category registration: "localhost:11111/auth/registration/category",
+    food registration by restaurant: "localhost:11111/auth/registration/restaurant/{restaurantId}/food"
+
 
     customer login: "localhost:11111/auth/login/customer",
     raider login: "localhost:11111/auth/login/raider",

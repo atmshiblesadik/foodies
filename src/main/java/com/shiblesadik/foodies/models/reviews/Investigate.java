@@ -4,17 +4,17 @@ import org.springframework.data.annotation.Id;
 
 public class Investigate {
     @Id
-    private Integer id;
-    private Integer customerId;
-    private Integer raiderId;
-    private Integer restaurantId;
-    private Integer orderId;
-    private Integer details;
+    private String id;
+    private String customerId;
+    private String raiderId;
+    private String restaurantId;
+    private String orderId;
+    private String details;
 
     public Investigate() {
     }
 
-    public Investigate(Integer id, Integer customerId, Integer raiderId, Integer restaurantId, Integer orderId, Integer details) {
+    public Investigate(String id, String customerId, String raiderId, String restaurantId, String orderId, String details) {
         this.id = id;
         this.customerId = customerId;
         this.raiderId = raiderId;
@@ -23,51 +23,51 @@ public class Investigate {
         this.details = details;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Integer getCustomerId() {
+    public String getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(Integer customerId) {
+    public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
 
-    public Integer getRaiderId() {
+    public String getRaiderId() {
         return raiderId;
     }
 
-    public void setRaiderId(Integer raiderId) {
+    public void setRaiderId(String raiderId) {
         this.raiderId = raiderId;
     }
 
-    public Integer getRestaurantId() {
+    public String getRestaurantId() {
         return restaurantId;
     }
 
-    public void setRestaurantId(Integer restaurantId) {
+    public void setRestaurantId(String restaurantId) {
         this.restaurantId = restaurantId;
     }
 
-    public Integer getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Integer orderId) {
+    public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
 
-    public Integer getDetails() {
+    public String getDetails() {
         return details;
     }
 
-    public void setDetails(Integer details) {
+    public void setDetails(String details) {
         this.details = details;
     }
 

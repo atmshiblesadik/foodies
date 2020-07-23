@@ -9,8 +9,8 @@ public class Complaint extends Investigate {
     public Complaint() {
     }
 
-    public Complaint(Integer id, Integer customerId, Integer raiderId, Integer restaurantId,
-                     Integer orderId, Integer details, boolean solved) {
+    public Complaint(String id, String customerId, String raiderId, String restaurantId,
+                     String orderId, String details, boolean solved) {
         super(id, customerId, raiderId, restaurantId, orderId, details);
         this.solved = solved;
     }

@@ -9,7 +9,7 @@ public class Address extends Area {
     public Address() {
     }
 
-    public Address(Integer id, String name, String city,
+    public Address(String id, String name, String city,
                    String road, String house, String floor, String other) {
         super(id, name, city);
         this.road = road;

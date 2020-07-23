@@ -6,32 +6,32 @@ import java.util.Arrays;
 
 @Document(collection = "admins")
 public class Admin extends User {
-    private Integer numberOfComplaint;
-    private Integer[] complaintsIds;
+    private String numberOfComplaint;
+    private String[] complaintsIds;
 
     public Admin() {
     }
 
-    public Admin(Integer id, String name, String email, String[] phone, String avatar, Integer areaId,
-                 Integer numberOfComplaint, Integer[] complaintsIds) {
+    public Admin(String id, String name, String email, String phone, String avatar, String areaId,
+                 String numberOfComplaint, String[] complaintsIds) {
         super(id, name, email, phone, avatar, areaId);
         this.numberOfComplaint = numberOfComplaint;
         this.complaintsIds = complaintsIds;
     }
 
-    public Integer getNumberOfComplaint() {
+    public String getNumberOfComplaint() {
         return numberOfComplaint;
     }
 
-    public void setNumberOfComplaint(Integer numberOfComplaint) {
+    public void setNumberOfComplaint(String numberOfComplaint) {
         this.numberOfComplaint = numberOfComplaint;
     }
 
-    public Integer[] getComplaintsIds() {
+    public String[] getComplaintsIds() {
         return complaintsIds;
     }
 
-    public void setComplaintsIds(Integer[] complaintsIds) {
+    public void setComplaintsIds(String[] complaintsIds) {
         this.complaintsIds = complaintsIds;
     }
 

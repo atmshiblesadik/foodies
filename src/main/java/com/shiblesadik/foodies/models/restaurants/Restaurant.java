@@ -8,16 +8,16 @@ import java.util.Arrays;
 @Document(collection = "restaurants")
 public class Restaurant {
     @Id
-    private Integer id;
+    private String id;
     private String name;
     private String email;
     private String[] phones;
     private String avatar;
-    private Integer areaId;
+    private String areaId;
     private Double rating;
-    private Integer numberOfFoods;
-    private Integer numberOfCategories;
-    private Integer numberOfOrders;
+    private String numberOfFoods;
+    private String numberOfCategories;
+    private String numberOfOrders;
     private String[] foodsIds;
     private String[] categoriesIds;
     private String[] ordersIds;
@@ -27,9 +27,9 @@ public class Restaurant {
     public Restaurant() {
     }
 
-    public Restaurant(Integer id, String name, String email, String[] phones, String avatar, Integer areaId,
-                      Double rating, Integer numberOfFoods, Integer numberOfCategories,
-                      Integer numberOfOrders, String[] foodsIds, String[] categoriesIds, String[] ordersIds,
+    public Restaurant(String id, String name, String email, String[] phones, String avatar, String areaId,
+                      Double rating, String numberOfFoods, String numberOfCategories,
+                      String numberOfOrders, String[] foodsIds, String[] categoriesIds, String[] ordersIds,
                       String[] reviewsIds, String[] complaintsIds) {
         this.id = id;
         this.name = name;
@@ -48,11 +48,11 @@ public class Restaurant {
         this.complaintsIds = complaintsIds;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -88,11 +88,11 @@ public class Restaurant {
         this.avatar = avatar;
     }
 
-    public Integer getAreaId() {
+    public String getAreaId() {
         return areaId;
     }
 
-    public void setAreaId(Integer areaId) {
+    public void setAreaId(String areaId) {
         this.areaId = areaId;
     }
 
@@ -104,27 +104,27 @@ public class Restaurant {
         this.rating = rating;
     }
 
-    public Integer getNumberOfFoods() {
+    public String getNumberOfFoods() {
         return numberOfFoods;
     }
 
-    public void setNumberOfFoods(Integer numberOfFoods) {
+    public void setNumberOfFoods(String numberOfFoods) {
         this.numberOfFoods = numberOfFoods;
     }
 
-    public Integer getNumberOfCategories() {
+    public String getNumberOfCategories() {
         return numberOfCategories;
     }
 
-    public void setNumberOfCategories(Integer numberOfCategories) {
+    public void setNumberOfCategories(String numberOfCategories) {
         this.numberOfCategories = numberOfCategories;
     }
 
-    public Integer getNumberOfOrders() {
+    public String getNumberOfOrders() {
         return numberOfOrders;
     }
 
-    public void setNumberOfOrders(Integer numberOfOrders) {
+    public void setNumberOfOrders(String numberOfOrders) {
         this.numberOfOrders = numberOfOrders;
     }
 

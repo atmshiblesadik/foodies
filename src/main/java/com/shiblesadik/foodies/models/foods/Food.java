@@ -6,19 +6,19 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "foods")
 public class Food {
     @Id
-    private Integer id;
+    private String id;
     private String name;
     private Double price;
-    private Integer categoryId;
-    private Integer areaId;
-    private Integer restaurantId;
+    private String categoryId;
+    private String areaId;
+    private String restaurantId;
     private String avatar;
     private String details;
 
     public Food() {
     }
 
-    public Food(Integer id, String name, Double price, Integer categoryId, Integer areaId, Integer restaurantId,
+    public Food(String id, String name, Double price, String categoryId, String areaId, String restaurantId,
                 String avatar, String details) {
         this.id = id;
         this.name = name;
@@ -30,11 +30,11 @@ public class Food {
         this.details = details;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -54,27 +54,27 @@ public class Food {
         this.price = price;
     }
 
-    public Integer getCategoryId() {
+    public String getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(Integer categoryId) {
+    public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
     }
 
-    public Integer getAreaId() {
+    public String getAreaId() {
         return areaId;
     }
 
-    public void setAreaId(Integer areaId) {
+    public void setAreaId(String areaId) {
         this.areaId = areaId;
     }
 
-    public Integer getRestaurantId() {
+    public String getRestaurantId() {
         return restaurantId;
     }
 
-    public void setRestaurantId(Integer restaurantId) {
+    public void setRestaurantId(String restaurantId) {
         this.restaurantId = restaurantId;
     }
 

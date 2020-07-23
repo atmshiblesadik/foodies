@@ -8,19 +8,19 @@ import java.util.Arrays;
 @Document(collection = "categories")
 public class Category {
     @Id
-    private Integer id;
+    private String id;
     private String name;
     private String details;
     private String avatar;
-    private Integer numberOfFoods;
-    private Integer numberOfRestaurants;
-    private Integer[] foodsIds;
-    private Integer[] restaurantsIds;
+    private String numberOfFoods;
+    private String numberOfRestaurants;
+    private String[] foodsIds;
+    private String[] restaurantsIds;
 
     public Category() {
     }
 
-    public Category(Integer id, String name, String details, String avatar, Integer numberOfRestaurants, Integer numberOfFoods) {
+    public Category(String id, String name, String details, String avatar, String numberOfRestaurants, String numberOfFoods) {
         this.id = id;
         this.name = name;
         this.details = details;
@@ -29,11 +29,11 @@ public class Category {
         this.numberOfFoods = numberOfFoods;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -61,35 +61,35 @@ public class Category {
         this.avatar = avatar;
     }
 
-    public Integer getNumberOfRestaurants() {
+    public String getNumberOfRestaurants() {
         return numberOfRestaurants;
     }
 
-    public void setNumberOfRestaurants(Integer numberOfRestaurants) {
+    public void setNumberOfRestaurants(String numberOfRestaurants) {
         this.numberOfRestaurants = numberOfRestaurants;
     }
 
-    public Integer getNumberOfFoods() {
+    public String getNumberOfFoods() {
         return numberOfFoods;
     }
 
-    public void setNumberOfFoods(Integer numberOfFoods) {
+    public void setNumberOfFoods(String numberOfFoods) {
         this.numberOfFoods = numberOfFoods;
     }
 
-    public Integer[] getFoodsIds() {
+    public String[] getFoodsIds() {
         return foodsIds;
     }
 
-    public void setFoodsIds(Integer[] foodsIds) {
+    public void setFoodsIds(String[] foodsIds) {
         this.foodsIds = foodsIds;
     }
 
-    public Integer[] getRestaurantsIds() {
+    public String[] getRestaurantsIds() {
         return restaurantsIds;
     }
 
-    public void setRestaurantsIds(Integer[] restaurantsIds) {
+    public void setRestaurantsIds(String[] restaurantsIds) {
         this.restaurantsIds = restaurantsIds;
     }
 

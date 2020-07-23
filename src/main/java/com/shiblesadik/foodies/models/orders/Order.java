@@ -5,37 +5,36 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Arrays;
-import java.util.TimeZone;
 
 @Document(collection = "orders")
 public class Order extends OrderProcessing {
     @Id
-    private Integer id;
-    private Integer customerId;
-    private Integer restaurantId;
-    private Integer raiderId;
+    private String id;
+    private String customerId;
+    private String restaurantId;
+    private String raiderId;
     private boolean restaurantTakeOrder;
     private boolean raiderTakeOrder;
     private Double totalAmount;
     private Double discountAmount;
     private Double finalAmount;
-    private Integer[] foodsIds;
+    private String[] foodsIds;
     private boolean raiderReceiveAmount;
     private boolean complete;
-    private Integer reviewId;
-    private Integer complaintId;
-    private TimeZone totalTime;
+    private String reviewId;
+    private String complaintId;
+    private String totalTime;
     private Address address;
 
     public Order() {
     }
 
-    public Order(TimeZone customerPlaceOrder, TimeZone restaurantReceiveOrder, TimeZone raiderReceiveOrder,
-                 TimeZone raiderReceiveFoods, TimeZone customerReceiveOrder, Integer id, Integer customerId,
-                 Integer restaurantId, Integer raiderId, boolean restaurantTakeOrder, boolean raiderTakeOrder,
-                 Double totalAmount, Double discountAmount, Double finalAmount, Integer[] foodsIds,
-                 boolean raiderReceiveAmount, boolean complete, Integer reviewId, Integer complaintId,
-                 TimeZone totalTime, Address address) {
+    public Order(String customerPlaceOrder, String restaurantReceiveOrder, String raiderReceiveOrder,
+                 String raiderReceiveFoods, String customerReceiveOrder, String id, String customerId,
+                 String restaurantId, String raiderId, boolean restaurantTakeOrder, boolean raiderTakeOrder,
+                 Double totalAmount, Double discountAmount, Double finalAmount, String[] foodsIds,
+                 boolean raiderReceiveAmount, boolean complete, String reviewId, String complaintId,
+                 String totalTime, Address address) {
         super(customerPlaceOrder, restaurantReceiveOrder, raiderReceiveOrder, raiderReceiveFoods, customerReceiveOrder);
         this.id = id;
         this.customerId = customerId;
@@ -55,35 +54,35 @@ public class Order extends OrderProcessing {
         this.address = address;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Integer getCustomerId() {
+    public String getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(Integer customerId) {
+    public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
 
-    public Integer getRestaurantId() {
+    public String getRestaurantId() {
         return restaurantId;
     }
 
-    public void setRestaurantId(Integer restaurantId) {
+    public void setRestaurantId(String restaurantId) {
         this.restaurantId = restaurantId;
     }
 
-    public Integer getRaiderId() {
+    public String getRaiderId() {
         return raiderId;
     }
 
-    public void setRaiderId(Integer raiderId) {
+    public void setRaiderId(String raiderId) {
         this.raiderId = raiderId;
     }
 
@@ -127,11 +126,11 @@ public class Order extends OrderProcessing {
         this.finalAmount = finalAmount;
     }
 
-    public Integer[] getFoodsIds() {
+    public String[] getFoodsIds() {
         return foodsIds;
     }
 
-    public void setFoodsIds(Integer[] foodsIds) {
+    public void setFoodsIds(String[] foodsIds) {
         this.foodsIds = foodsIds;
     }
 
@@ -151,27 +150,27 @@ public class Order extends OrderProcessing {
         this.complete = complete;
     }
 
-    public Integer getReviewId() {
+    public String getReviewId() {
         return reviewId;
     }
 
-    public void setReviewId(Integer reviewId) {
+    public void setReviewId(String reviewId) {
         this.reviewId = reviewId;
     }
 
-    public Integer getComplaintId() {
+    public String getComplaintId() {
         return complaintId;
     }
 
-    public void setComplaintId(Integer complaintId) {
+    public void setComplaintId(String complaintId) {
         this.complaintId = complaintId;
     }
 
-    public TimeZone getTotalTime() {
+    public String getTotalTime() {
         return totalTime;
     }
 
-    public void setTotalTime(TimeZone totalTime) {
+    public void setTotalTime(String totalTime) {
         this.totalTime = totalTime;
     }
 

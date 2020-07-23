@@ -1,19 +1,17 @@
 package com.shiblesadik.foodies.models.orders;
 
-import java.util.TimeZone;
-
 public class OrderProcessing {
-    private TimeZone customerPlaceOrder;
-    private TimeZone restaurantReceiveOrder;
-    private TimeZone raiderReceiveOrder;
-    private TimeZone raiderReceiveFoods;
-    private TimeZone customerReceiveOrder;
+    private String customerPlaceOrder;
+    private String restaurantReceiveOrder;
+    private String raiderReceiveOrder;
+    private String raiderReceiveFoods;
+    private String customerReceiveOrder;
 
     public OrderProcessing() {
     }
 
-    public OrderProcessing(TimeZone customerPlaceOrder, TimeZone restaurantReceiveOrder, TimeZone raiderReceiveOrder,
-                           TimeZone raiderReceiveFoods, TimeZone customerReceiveOrder) {
+    public OrderProcessing(String customerPlaceOrder, String restaurantReceiveOrder, String raiderReceiveOrder,
+                           String raiderReceiveFoods, String customerReceiveOrder) {
         this.customerPlaceOrder = customerPlaceOrder;
         this.restaurantReceiveOrder = restaurantReceiveOrder;
         this.raiderReceiveOrder = raiderReceiveOrder;
@@ -21,43 +19,43 @@ public class OrderProcessing {
         this.customerReceiveOrder = customerReceiveOrder;
     }
 
-    public TimeZone getCustomerPlaceOrder() {
+    public String getCustomerPlaceOrder() {
         return customerPlaceOrder;
     }
 
-    public void setCustomerPlaceOrder(TimeZone customerPlaceOrder) {
+    public void setCustomerPlaceOrder(String customerPlaceOrder) {
         this.customerPlaceOrder = customerPlaceOrder;
     }
 
-    public TimeZone getRestaurantReceiveOrder() {
+    public String getRestaurantReceiveOrder() {
         return restaurantReceiveOrder;
     }
 
-    public void setRestaurantReceiveOrder(TimeZone restaurantReceiveOrder) {
+    public void setRestaurantReceiveOrder(String restaurantReceiveOrder) {
         this.restaurantReceiveOrder = restaurantReceiveOrder;
     }
 
-    public TimeZone getRaiderReceiveOrder() {
+    public String getRaiderReceiveOrder() {
         return raiderReceiveOrder;
     }
 
-    public void setRaiderReceiveOrder(TimeZone raiderReceiveOrder) {
+    public void setRaiderReceiveOrder(String raiderReceiveOrder) {
         this.raiderReceiveOrder = raiderReceiveOrder;
     }
 
-    public TimeZone getRaiderReceiveFoods() {
+    public String getRaiderReceiveFoods() {
         return raiderReceiveFoods;
     }
 
-    public void setRaiderReceiveFoods(TimeZone raiderReceiveFoods) {
+    public void setRaiderReceiveFoods(String raiderReceiveFoods) {
         this.raiderReceiveFoods = raiderReceiveFoods;
     }
 
-    public TimeZone getCustomerReceiveOrder() {
+    public String getCustomerReceiveOrder() {
         return customerReceiveOrder;
     }
 
-    public void setCustomerReceiveOrder(TimeZone customerReceiveOrder) {
+    public void setCustomerReceiveOrder(String customerReceiveOrder) {
         this.customerReceiveOrder = customerReceiveOrder;
     }
 

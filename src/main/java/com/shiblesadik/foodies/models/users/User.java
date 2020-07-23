@@ -2,21 +2,20 @@ package com.shiblesadik.foodies.models.users;
 
 import org.springframework.data.annotation.Id;
 
-import java.util.Arrays;
-
 public class User {
     @Id
-    private Integer id;
+    private String id;
     private String name;
     private String email;
-    private String[] phone;
+    private String phone;
     private String avatar;
-    private Integer areaId;
+    private String areaId;
+    private String password;
 
     public User() {
     }
 
-    public User(Integer id, String name, String email, String[] phone, String avatar, Integer areaId) {
+    public User(String id, String name, String email, String phone, String avatar, String areaId) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -25,11 +24,11 @@ public class User {
         this.areaId = areaId;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -49,11 +48,11 @@ public class User {
         this.email = email;
     }
 
-    public String[] getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(String[] phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -65,12 +64,23 @@ public class User {
         this.avatar = avatar;
     }
 
-    public Integer getAreaId() {
+    public String getAreaId() {
         return areaId;
     }
 
-    public void setAreaId(Integer areaId) {
+    public void setAreaId(String areaId) {
         this.areaId = areaId;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void preparedForRegistration(UserRegistrationModel userRegistrationModel) {
+        setPhone(userRegistrationModel.getPhone());
+        setName(userRegistrationModel.getName());
+        setPassword(userRegistrationModel.getPassword());
+        setEmail(null);
     }
 
     @Override
@@ -79,7 +89,7 @@ public class User {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", phone=" + Arrays.toString(phone) +
+                ", phone=" + phone +
                 ", avatar='" + avatar + '\'' +
                 ", areaId='" + areaId + '\'' +
                 '}';

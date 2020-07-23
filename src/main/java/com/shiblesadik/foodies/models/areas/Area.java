@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "areas")
 public class Area {
     @Id
-    private Integer id; // id = area code
+    private String id; // id = area code
     private String name;
     private String city;
     private Integer numberOfRestaurants;
@@ -17,13 +17,13 @@ public class Area {
     public Area() {
     }
 
-    public Area(Integer id, String name, String city) {
+    public Area(String id, String name, String city) {
         this.id = id;
         this.name = name;
         this.city = city;
     }
 
-    public Area(Integer id, String name, String city, Integer numberOfRestaurants, Integer numberOfRaider,
+    public Area(String id, String name, String city, Integer numberOfRestaurants, Integer numberOfRaider,
                 Integer numberOfCustomer, Integer numberOfAdmin) {
         this.id = id;
         this.name = name;
@@ -34,11 +34,11 @@ public class Area {
         this.numberOfAdmin = numberOfAdmin;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

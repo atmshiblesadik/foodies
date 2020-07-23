@@ -1,7 +1,6 @@
 package com.shiblesadik.foodies.models.users;
 
 import com.shiblesadik.foodies.models.areas.Address;
-import com.shiblesadik.foodies.models.orders.Order;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Arrays;
@@ -10,21 +9,19 @@ import java.util.Arrays;
 public class Customer extends User {
     private Address address;
     private boolean onOrder;
-    private Integer currentOrderId;
-    private Order currentOrder;
-    private Integer lastOrderId;
-    private Order lastOrder;
-    private Integer numberOfOrder;
-    private Integer[] ordersIds;
-    private Integer[] reviewsIds;
-    private Integer[] complaintsIds;
+    private String currentOrderId;
+    private String lastOrderId;
+    private String numberOfOrder;
+    private String[] ordersIds;
+    private String[] reviewsIds;
+    private String[] complaintsIds;
 
     public Customer() {
     }
 
-    public Customer(Integer id, String name, String email, String[] phone, String avatar, Integer areaId,
-                    boolean onOrder, Integer currentOrderId, Integer lastOrderId, Integer numberOfOrder,
-                    Integer[] ordersIds, Integer[] reviewsIds, Integer[] complaintsIds) {
+    public Customer(String id, String name, String email, String phone, String avatar, String areaId,
+                    boolean onOrder, String currentOrderId, String lastOrderId, String numberOfOrder,
+                    String[] ordersIds, String[] reviewsIds, String[] complaintsIds) {
         super(id, name, email, phone, avatar, areaId);
         this.onOrder = onOrder;
         this.currentOrderId = currentOrderId;
@@ -51,68 +48,52 @@ public class Customer extends User {
         this.onOrder = onOrder;
     }
 
-    public Integer getCurrentOrderId() {
+    public String getCurrentOrderId() {
         return currentOrderId;
     }
 
-    public void setCurrentOrderId(Integer currentOrderId) {
+    public void setCurrentOrderId(String currentOrderId) {
         this.currentOrderId = currentOrderId;
     }
 
-    public Integer getLastOrderId() {
+    public String getLastOrderId() {
         return lastOrderId;
     }
 
-    public void setLastOrderId(Integer lastOrderId) {
+    public void setLastOrderId(String lastOrderId) {
         this.lastOrderId = lastOrderId;
     }
 
-    public Integer getNumberOfOrder() {
+    public String getNumberOfOrder() {
         return numberOfOrder;
     }
 
-    public void setNumberOfOrder(Integer numberOfOrder) {
+    public void setNumberOfOrder(String numberOfOrder) {
         this.numberOfOrder = numberOfOrder;
     }
 
-    public Integer[] getOrdersIds() {
+    public String[] getOrdersIds() {
         return ordersIds;
     }
 
-    public void setOrdersIds(Integer[] ordersIds) {
+    public void setOrdersIds(String[] ordersIds) {
         this.ordersIds = ordersIds;
     }
 
-    public Integer[] getReviewsIds() {
+    public String[] getReviewsIds() {
         return reviewsIds;
     }
 
-    public void setReviewsIds(Integer[] reviewsIds) {
+    public void setReviewsIds(String[] reviewsIds) {
         this.reviewsIds = reviewsIds;
     }
 
-    public Integer[] getComplaintsIds() {
+    public String[] getComplaintsIds() {
         return complaintsIds;
     }
 
-    public void setComplaintsIds(Integer[] complaintsIds) {
+    public void setComplaintsIds(String[] complaintsIds) {
         this.complaintsIds = complaintsIds;
-    }
-
-    public Order getCurrentOrder() {
-        return currentOrder;
-    }
-
-    public void setCurrentOrder(Order currentOrder) {
-        this.currentOrder = currentOrder;
-    }
-
-    public Order getLastOrder() {
-        return lastOrder;
-    }
-
-    public void setLastOrder(Order lastOrder) {
-        this.lastOrder = lastOrder;
     }
 
     @Override
@@ -121,9 +102,7 @@ public class Customer extends User {
                 "address=" + address.toString() +
                 "onOrder=" + onOrder +
                 ", currentOrderId='" + currentOrderId + '\'' +
-                ", currentOrder=" + currentOrder +
                 ", lastOrderId='" + lastOrderId + '\'' +
-                ", lastOrder=" + lastOrder +
                 ", numberOfOrder=" + numberOfOrder +
                 ", ordersIds=" + Arrays.toString(ordersIds) +
                 ", reviewsIds=" + Arrays.toString(reviewsIds) +
