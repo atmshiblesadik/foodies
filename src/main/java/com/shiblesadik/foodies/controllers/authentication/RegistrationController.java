@@ -2,6 +2,7 @@ package com.shiblesadik.foodies.controllers.authentication;
 
 import com.google.common.hash.Hashing;
 import com.shiblesadik.foodies.models.areas.Area;
+import com.shiblesadik.foodies.models.areas.City;
 import com.shiblesadik.foodies.models.restaurants.Restaurant;
 import com.shiblesadik.foodies.models.users.Customer;
 import com.shiblesadik.foodies.models.users.UserRegistrationModel;
@@ -133,27 +134,40 @@ public class RegistrationController {
 
     @PostMapping("/area")
     public void areaRegistrationPostRequest(@ModelAttribute Area area, HttpServletResponse httpServletResponse) {
-//        List<Area> areas = areaRepository.findAllByCity(area.getCity());
-//        boolean alreadyExists = false;
-//        for (Area a: areas) {
-//            if (a.getName().toLowerCase().equals(area.getName().toLowerCase())) {
-//                alreadyExists = true;
-//                break;
-//            }
-//        }
-//        if (!alreadyExists) {
-//            areaRepository.save(area);
-//            System.out.println("Area Insert Successfully: " + area.toString());
-//            httpServletResponse.setHeader("Location", "/");
-//        } else {
-//            System.out.println("Already Exists This Area");
-//            httpServletResponse.setHeader("Location", "/auth/registration/area");
-//        }
-//        httpServletResponse.setStatus(302);
+        List<Area> areas = areaRepository.findAllByCityId(area.getCityId());
+        boolean alreadyExists = false;
+        for (Area a: areas) {
+            if (a.getName().toLowerCase().equals(area.getName().toLowerCase())) {
+                alreadyExists = true;
+                break;
+            }
+        }
+        if (!alreadyExists) {
+            areaRepository.save(area);
+            System.out.println("Area Insert Successfully: " + area.toString());
+            httpServletResponse.setHeader("Location", "/");
+        } else {
+            System.out.println("Already Exists This Area");
+            httpServletResponse.setHeader("Location", "/auth/registration/area");
+        }
+        httpServletResponse.setStatus(302);
     }
     /* Areas */
 
     /* Cities */
+    @GetMapping("/city")
+    public String cityRegistrationGetRequest(Model model) {
+        model.addAttribute("registration", new City());
+        model.addAttribute("title", "City Registration");
+        model.addAttribute("id", "city-registration");
+        model.addAttribute("action", "/auth/registration/city");
+        return "city";
+    }
 
+    @PostMapping("/city")
+    public void cityRegistrationPostRequest(@ModelAttribute City city, HttpServletResponse httpServletResponse) {
+        httpServletResponse.setHeader("Location", "/");
+        httpServletResponse.setStatus(302);
+    }
     /* Cities */
 }

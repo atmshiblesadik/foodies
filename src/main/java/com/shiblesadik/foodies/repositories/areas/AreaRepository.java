@@ -13,5 +13,5 @@ public interface AreaRepository extends MongoRepository<Area, String> {
 
     List<Area> findByName(String name);
 
-    List<Area> findAllByCity(String city);
+    List<Area> findAllByCityId(String id);
 }

@@ -50,3 +50,7 @@ function loginFormValidation() {
 function areaRegistrationValidation() {
     return true;
 }
+
+function cityRegistrationValidation() {
+    return true;
+}
