@@ -44,7 +44,7 @@ public class RestaurantsAPI {
         return restaurantList;
     }
 
-    @GetMapping("/view/area/{areId}")
+    @GetMapping("/view/area/{areaId}")
     public List<Restaurant> getAllByAreaId(@PathVariable String areaId) {
         return restaurantRepository.findAllByAreaId(areaId);
     }
