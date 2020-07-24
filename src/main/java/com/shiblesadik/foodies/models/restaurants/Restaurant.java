@@ -1,7 +1,5 @@
 package com.shiblesadik.foodies.models.restaurants;
 
-import com.shiblesadik.foodies.models.areas.Address;
-import com.shiblesadik.foodies.models.foods.Item;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,34 +11,51 @@ public class Restaurant {
     private String id;
     private String name;
     private String email;
+    private String phone;
+    private String password;
+    private String confirmPassword;
     private String[] phones;
-    private Address address;
-    private Item[] items;
-    private Double rating;
+    private String openingTime;
+    private String closingTime;
+    private boolean open;
     private String avatar;
-    private String[] reviews;
-    private String[] orders;
-    private String details;
-    private String[] openingTime;
+    private String areaId;
+    private Double rating;
+    private String numberOfFoods;
+    private String numberOfCategories;
+    private String numberOfOrders;
+    private String[] foodsIds;
+    private String[] categoriesIds;
+    private String[] ordersIds;
+    private String[] reviewsIds;
+    private String[] complaintsIds;
 
     public Restaurant() {
     }
 
-    public Restaurant(String id, String name, String email, String[] phones, Address address, Item[] items,
-                      Double rating, String avatar, String[] reviews, String[] orders, String details,
-                      String[] openingTime) {
+    public Restaurant(String id, String name, String email, String phone, String[] phones, String openingTime,
+                      String closingTime, boolean open, String avatar, String areaId, Double rating,
+                      String numberOfFoods, String numberOfCategories, String numberOfOrders, String[] foodsIds,
+                      String[] categoriesIds, String[] ordersIds, String[] reviewsIds, String[] complaintsIds) {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.phone = phone;
         this.phones = phones;
-        this.address = address;
-        this.items = items;
-        this.rating = rating;
-        this.avatar = avatar;
-        this.reviews = reviews;
-        this.orders = orders;
-        this.details = details;
         this.openingTime = openingTime;
+        this.closingTime = closingTime;
+        this.open = open;
+        this.avatar = avatar;
+        this.areaId = areaId;
+        this.rating = rating;
+        this.numberOfFoods = numberOfFoods;
+        this.numberOfCategories = numberOfCategories;
+        this.numberOfOrders = numberOfOrders;
+        this.foodsIds = foodsIds;
+        this.categoriesIds = categoriesIds;
+        this.ordersIds = ordersIds;
+        this.reviewsIds = reviewsIds;
+        this.complaintsIds = complaintsIds;
     }
 
     public String getId() {
@@ -67,6 +82,30 @@ public class Restaurant {
         this.email = email;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
     public String[] getPhones() {
         return phones;
     }
@@ -75,28 +114,28 @@ public class Restaurant {
         this.phones = phones;
     }
 
-    public Address getAddress() {
-        return address;
+    public String getOpeningTime() {
+        return openingTime;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setOpeningTime(String openingTime) {
+        this.openingTime = openingTime;
     }
 
-    public Item[] getItems() {
-        return items;
+    public String getClosingTime() {
+        return closingTime;
     }
 
-    public void setItems(Item[] items) {
-        this.items = items;
+    public void setClosingTime(String closingTime) {
+        this.closingTime = closingTime;
     }
 
-    public Double getRating() {
-        return rating;
+    public boolean isOpen() {
+        return open;
     }
 
-    public void setRating(Double rating) {
-        this.rating = rating;
+    public void setOpen(boolean open) {
+        this.open = open;
     }
 
     public String getAvatar() {
@@ -107,36 +146,84 @@ public class Restaurant {
         this.avatar = avatar;
     }
 
-    public String[] getReviews() {
-        return reviews;
+    public String getAreaId() {
+        return areaId;
     }
 
-    public void setReviews(String[] reviews) {
-        this.reviews = reviews;
+    public void setAreaId(String areaId) {
+        this.areaId = areaId;
     }
 
-    public String[] getOrders() {
-        return orders;
+    public Double getRating() {
+        return rating;
     }
 
-    public void setOrders(String[] orders) {
-        this.orders = orders;
+    public void setRating(Double rating) {
+        this.rating = rating;
     }
 
-    public String getDetails() {
-        return details;
+    public String getNumberOfFoods() {
+        return numberOfFoods;
     }
 
-    public void setDetails(String details) {
-        this.details = details;
+    public void setNumberOfFoods(String numberOfFoods) {
+        this.numberOfFoods = numberOfFoods;
     }
 
-    public String[] getOpeningTime() {
-        return openingTime;
+    public String getNumberOfCategories() {
+        return numberOfCategories;
     }
 
-    public void setOpeningTime(String[] openingTime) {
-        this.openingTime = openingTime;
+    public void setNumberOfCategories(String numberOfCategories) {
+        this.numberOfCategories = numberOfCategories;
+    }
+
+    public String getNumberOfOrders() {
+        return numberOfOrders;
+    }
+
+    public void setNumberOfOrders(String numberOfOrders) {
+        this.numberOfOrders = numberOfOrders;
+    }
+
+    public String[] getFoodsIds() {
+        return foodsIds;
+    }
+
+    public void setFoodsIds(String[] foodsIds) {
+        this.foodsIds = foodsIds;
+    }
+
+    public String[] getCategoriesIds() {
+        return categoriesIds;
+    }
+
+    public void setCategoriesIds(String[] categoriesIds) {
+        this.categoriesIds = categoriesIds;
+    }
+
+    public String[] getOrdersIds() {
+        return ordersIds;
+    }
+
+    public void setOrdersIds(String[] ordersIds) {
+        this.ordersIds = ordersIds;
+    }
+
+    public String[] getReviewsIds() {
+        return reviewsIds;
+    }
+
+    public void setReviewsIds(String[] reviewsIds) {
+        this.reviewsIds = reviewsIds;
+    }
+
+    public String[] getComplaintsIds() {
+        return complaintsIds;
+    }
+
+    public void setComplaintsIds(String[] complaintsIds) {
+        this.complaintsIds = complaintsIds;
     }
 
     @Override
@@ -146,14 +233,20 @@ public class Restaurant {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", phones=" + Arrays.toString(phones) +
-                ", address=" + address +
-                ", items=" + Arrays.toString(items) +
-                ", rating=" + rating +
+                ", openingTime='" + openingTime + '\'' +
+                ", closingTime='" + closingTime + '\'' +
+                ", open=" + open +
                 ", avatar='" + avatar + '\'' +
-                ", reviews=" + Arrays.toString(reviews) +
-                ", orders=" + Arrays.toString(orders) +
-                ", details='" + details + '\'' +
-                ", openingTime=" + Arrays.toString(openingTime) +
+                ", areaId='" + areaId + '\'' +
+                ", rating=" + rating +
+                ", numberOfFoods='" + numberOfFoods + '\'' +
+                ", numberOfCategories='" + numberOfCategories + '\'' +
+                ", numberOfOrders='" + numberOfOrders + '\'' +
+                ", foodsIds=" + Arrays.toString(foodsIds) +
+                ", categoriesIds=" + Arrays.toString(categoriesIds) +
+                ", ordersIds=" + Arrays.toString(ordersIds) +
+                ", reviewsIds=" + Arrays.toString(reviewsIds) +
+                ", complaintsIds=" + Arrays.toString(complaintsIds) +
                 '}';
     }
 }

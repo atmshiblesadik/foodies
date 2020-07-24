@@ -1,0 +1,128 @@
+{
+    "restaurants": {
+        "restaurantId": "number",
+        "restaurantName": "string",
+        "restaurantEmail": "string",
+        "restaurantPhones": "string[]",
+        "restaurantAvatar": "url",
+        "restaurantAreaId": "areaId: number",
+        "restaurantRating": "number",
+        "numberOfFoods": "number",
+        "numberOfCategories": "number",
+        "numberOfOrder": "number",
+        "foodsIds": "foodId[]: number",
+        "categoriesIds": "categoryId[]: number",
+        "ordersIds": "orderId[]: number",
+        "reviewsIds": "reviewId[]: number",
+        "complaintsIds": "complaintId[]: number"
+    },
+    "categories": {
+        "categoryId": "number",
+        "categoryName": "string",
+        "categoryAvatar": "url",
+        "numberOfFoods": "number",
+        "numberOfRestaurants": "number",
+        "foodsIds": "foodId[]: number",
+        "restaurantsIds": "restaurantId[]: number"
+    },
+    "foods": {
+        "foodId": "number",
+        "foodName": "string",
+        "foodPrice": "string",
+        "foodAvatar": "url",
+        "categoryId": "number",
+        "areaId": "string",
+        "restaurantId": "number"
+    },
+    "orderProcessing": {
+        "customerPlaceOrder": "time",
+        "restaurantReceiveOrder": "time",
+        "raiderReceiveOrder": "time",
+        "raiderReceiveFoods": "time",
+        "customerReceiveOrder": "time"
+    },
+    "orders": {
+        "orderId": "number",
+        "customerId": "number",
+        "restaurantId": "number",
+        "raiderId": "number",
+        "restaurantTakeOrder": "boolean",
+        "raiderTakeOrder": "boolean",
+        "processing": "orderProcessing",
+        "raiderReceivedAmount": "boolean",
+        "complete": "boolean",
+        "totalAmount": "number",
+        "discountAmount": "number",
+        "finalAmount": "number",
+        "foodsIds": "foodId[]: number",
+        "orderComplete": "boolean",
+        "reviewId": "number",
+        "complaintId": "number",
+        "totalTime": "time"
+    },
+    "reviews": {
+        "reviewId": "number",
+        "customerId": "number",
+        "raiderId": "number",
+        "restaurantId": "number",
+        "orderId": "number",
+        "details": "string",
+        "rating": "number"
+    },
+    "complaints": {
+        "complaintId": "number",
+        "customerId": "number",
+        "raiderId": "number",
+        "adminId": "number",
+        "restaurantId": "number",
+        "orderId": "number",
+        "details": "string",
+        "solved": "boolean"
+    },
+    "customers": {
+        "customerId": "number",
+        "customerName": "string",
+        "customerPhone": "string",
+        "customerAvatar": "url",
+        "customerAreaId": "number",
+        "customerOnOrder": "boolean",
+        "customerCurrentOrderId": "orderId: number",
+        "lastOrderId": "orderId: number",
+        "numberOfOrder": "number",
+        "ordersIds": "orderId[]: number",
+        "reviewsIds": "reviewId[]: number",
+        "complaintsIds": "complaintId[]: number"
+    },
+    "raiders": {
+        "raiderId": "number",
+        "raiderName": "string",
+        "raiderPhone": "string",
+        "raiderAvatar": "url",
+        "raiderRating": "number",
+        "raiderAvailable": "boolean",
+        "raiderOnDuty": "boolean",
+        "raiderAreaId": "areaId: number",
+        "numberOfOrder": "number",
+        "ordersIds": "orderId[]: number",
+        "reviewsIds": "reviewId[]: number",
+        "complaintsIds": "complaintId[]: number",
+        "lastOrderId": "orderId: number"
+    },
+    "admins": {
+        "adminId": "number",
+        "adminName": "string",
+        "adminPhone": "string",
+        "adminAvatar": "url",
+        "adminAreaId": "areaId: number",
+        "numberOfComplaint": "number",
+        "complaintsIds": "complaintId[]: number"
+    },
+    "areas": {
+        "areaId": "number",
+        "areaName": "string",
+        "numberOfRestaurants": "number",
+        "numberOfRaiders": "number",
+        "numberOfCustomers": "number",
+        "numberOfAdmins": "number"
+    }
+}

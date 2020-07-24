@@ -1,47 +1,29 @@
 package com.shiblesadik.foodies.models.areas;
 
-public class Address {
-    private Area area;
-    private String flat;
-    private String floor;
-    private String house;
+public class Address extends Area {
     private String road;
+    private String house;
+    private String floor;
     private String other;
 
     public Address() {
     }
 
-    public Address(Area area, String flat, String floor, String house, String road, String other) {
-        this.area = area;
-        this.flat = flat;
-        this.floor = floor;
-        this.house = house;
+    public Address(String id, String name, String city,
+                   String road, String house, String floor, String other) {
+        super(id, name, city);
         this.road = road;
+        this.house = house;
+        this.floor = floor;
         this.other = other;
     }
 
-    public Area getArea() {
-        return area;
+    public String getRoad() {
+        return road;
     }
 
-    public void setArea(Area area) {
-        this.area = area;
-    }
-
-    public String getFlat() {
-        return flat;
-    }
-
-    public void setFlat(String flat) {
-        this.flat = flat;
-    }
-
-    public String getFloor() {
-        return floor;
-    }
-
-    public void setFloor(String floor) {
-        this.floor = floor;
+    public void setRoad(String road) {
+        this.road = road;
     }
 
     public String getHouse() {
@@ -52,12 +34,12 @@ public class Address {
         this.house = house;
     }
 
-    public String getRoad() {
-        return road;
+    public String getFloor() {
+        return floor;
     }
 
-    public void setRoad(String road) {
-        this.road = road;
+    public void setFloor(String floor) {
+        this.floor = floor;
     }
 
     public String getOther() {
@@ -71,11 +53,9 @@ public class Address {
     @Override
     public String toString() {
         return "Address{" +
-                "area=" + area.toString() +
-                ", flat='" + flat + '\'' +
-                ", floor='" + floor + '\'' +
+                "rood='" + road + '\'' +
                 ", house='" + house + '\'' +
-                ", road='" + road + '\'' +
+                ", floor='" + floor + '\'' +
                 ", other='" + other + '\'' +
                 '}';
     }

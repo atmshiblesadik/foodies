@@ -1,9 +1,10 @@
-package com.shiblesadik.foodies.repository.users;
+package com.shiblesadik.foodies.repositories.users;
 
 import com.shiblesadik.foodies.models.users.Customer;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -12,7 +13,8 @@ public interface CustomerRepository extends MongoRepository<Customer, String> {
 
     Customer findByPhone(String phone);
 
-    Customer findByEmail(String email);
+    List<Customer> findAllByAreaId(String area);
 
-    Customer findByPhoneAndPassword(String phone, String password);
+    Customer findByPhoneAndAndPassword(String phone, String password);
+
 }

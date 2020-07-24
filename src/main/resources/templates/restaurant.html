@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragements/header.html :: header"></head>
+<body>
+<div th:replace="fragements/navbar.html :: navbar"></div>
+
+<div th:if="${id} == 'restaurants'">
+    <h1 class="text-center">All Restaurants</h1>
+    <div class="d-flex justify-content-around flex-wrap p-2">
+        <div th:each="list: ${restaurantList}" class="p-3">
+            <div th:replace="fragements/template.html :: list-view"></div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-around flex-wrap p-2">
+        <a href="/restaurant/add" class="btn btn-primary">Add Restaurant</a>
+    </div>
+</div>
+
+<div th:if="${id} == 'restaurant'">
+    <h1 class="text-center"></h1>
+    <div class="d-flex justify-content-around flex-wrap p-2">
+        <div th:each="entity: ${restaurant}" class="p-3">
+            <div th:replace="fragements/template.html :: details"></div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-around flex-wrap p-2">
+        <a href="/restaurant/add" class="btn btn-primary">Add Foods</a>
+    </div>
+</div>
+
+<div th:if="${id} == 'add-food'">
+    <div th:replace="fragements/template.html :: add"></div>
+</div>
+
+<div th:if="${id} == 'add-restaurants'">
+    <div th:replace="fragements/template.html :: add"></div>
+</div>
+
+<div th:if="${id} == 'restaurant-registration'">
+    <div class="d-flex">
+        <div class="flex-fill"></div>
+        <div class="flex-grow-0" style="width: 350px;">
+            <div class="login-form">
+                <form th:action="${action}" th:object="${registration}" method="POST" name="registrationForm"
+                      onsubmit="return userRegistrationValidation()">
+                    <h4 class="modal-title">Registration Restaurant</h4><br/>
+                    <div class="form-group">
+                        <input type="text" name="name" th:field="*{name}" class="form-control" placeholder="Name"
+                               required="required">
+                        <div id="name-registration-error" class="small text-danger"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="phone" th:field="*{phone}" class="form-control"
+                               placeholder="Phone number" required="required">
+                        <div id="phone-registration-error" class="small text-danger"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" th:field="*{email}" class="form-control"
+                               placeholder="example@domain.com" required="required">
+                        <div id="email-registration-error" class="small text-danger"></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="city-name"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Select City
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="city-name">
+                                <div th:each="area: ${areaList}">
+                                    <div class="dropdown-item" th:value="${area.getName()}"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <input disabled type="text" name="city" class="form-control" placeholder="Select City"
+                               required="required">
+                    </div>
+                    <div class="form-group">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="area-name"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Select Area
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="area-name">
+                                <div class="dropdown-item" th:onclick="">Action</div>
+                                <div class="dropdown-item" th:onclick="">Another action</div>
+                                <div class="dropdown-item" th:onclick="">Something else here</div>
+                            </div>
+                        </div>
+                        <input disabled type="text" name="area" class="form-control" placeholder="Select Area"
+                               required="required">
+                        <div id="area-registration-error" class="small text-danger"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" th:field="*{password}" class="form-control"
+                               placeholder="Password" required="required">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="confirmPassword" th:field="*{confirmPassword}" class="form-control"
+                               placeholder="Confirm Password" required="required">
+                        <div id="password-registration-error" class="small text-danger"></div>
+                    </div>
+                    <input type="submit" name="submit" th:field="submit"
+                           class="btn btn-primary btn-md text-center align-content-center" value="Register">
+                </form>
+                <div class="small">Already have an account of restaurant? <a th:href="${login}">Login</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex-fill"></div>
+    </div>
+</div>
+
+<div th:if="${id} == 'restaurant-login'">
+    <div class="d-flex">
+        <div class="flex-fill"></div>
+        <div class="flex-grow-0" style="width: 350px;">
+            <div class="login-form">
+                <form th:action="${action}" th:object="${login}" method="POST" name="loginForm"
+                      onsubmit="return loginFormValidation()">
+                    <h4 class="modal-title">Login Restaurant</h4><br/>
+                    <div class="form-group">
+                        <input type="text" name="phone" th:field="*{phone}" class="form-control"
+                               placeholder="Phone number" required="required">
+                        <div id="phone-login-error" class="small text-danger"></div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" th:field="*{password}" class="form-control"
+                               placeholder="Password" required="required">
+                    </div>
+                    <div class="form-group small clearfix">
+                        <label class="form-check-label"><input type="checkbox"> Remember me</label>
+                        <a th:href="${forgotPass}" class="forgot-link">Forgot Password?</a>
+                    </div>
+                    <input type="submit" name="submit" th:field="submit"
+                           class="btn btn-primary btn-md text-center align-content-center" value="Login">
+                    <div id="login-error" class="small text-danger"></div>
+                </form>
+                <div class="small">Open a new restaurant? Contact our Admin
+                    <a th:href="${registration}"> Request for restaurant</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex-fill"></div>
+    </div>
+</div>
+
+<div th:replace="fragements/footer.html :: footer"></div>
+</body>
+</html>

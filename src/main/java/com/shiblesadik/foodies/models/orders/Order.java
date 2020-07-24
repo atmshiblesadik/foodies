@@ -1,51 +1,57 @@
 package com.shiblesadik.foodies.models.orders;
 
-import com.shiblesadik.foodies.models.datetime.DateTime;
-import com.shiblesadik.foodies.models.foods.Item;
+import com.shiblesadik.foodies.models.areas.Address;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Arrays;
 
+@Document(collection = "orders")
 public class Order extends OrderProcessing {
+    @Id
     private String id;
-    private String userId;
-    private String raiderId;
+    private String customerId;
     private String restaurantId;
-    private Item[] items;
-    private String instruction;
+    private String raiderId;
+    private boolean restaurantTakeOrder;
+    private boolean raiderTakeOrder;
     private Double totalAmount;
     private Double discountAmount;
     private Double finalAmount;
-    private Integer raiderRating;
-    private Integer foodRating;
-    private String complaintAgainstRaiderId;
-    private String complaintAgainstFoodId;
-    private String complaintAgainstRestaurantId;
+    private String[] foodsIds;
+    private boolean raiderReceiveAmount;
+    private boolean complete;
     private String reviewId;
+    private String complaintId;
+    private String totalTime;
+    private Address address;
 
     public Order() {
     }
 
-    public Order(DateTime orderPlaced, DateTime raiderReceiveOrder, DateTime restaurantReceiveOrder, DateTime foodComplete,
-                 DateTime raiderReceiveFood, DateTime orderDelivery, String id, String userId, String raiderId,
-                 String restaurantId, Item[] items, String instruction, Double totalAmount, Double discountAmount,
-                 Double finalAmount, Integer raiderRating, Integer foodRating, String complaintAgainstRaiderId,
-                 String complaintAgainstFoodId, String complaintAgainstRestaurantId, String reviewId) {
-        super(orderPlaced, raiderReceiveOrder, restaurantReceiveOrder, foodComplete, raiderReceiveFood, orderDelivery);
+    public Order(String customerPlaceOrder, String restaurantReceiveOrder, String raiderReceiveOrder,
+                 String raiderReceiveFoods, String customerReceiveOrder, String id, String customerId,
+                 String restaurantId, String raiderId, boolean restaurantTakeOrder, boolean raiderTakeOrder,
+                 Double totalAmount, Double discountAmount, Double finalAmount, String[] foodsIds,
+                 boolean raiderReceiveAmount, boolean complete, String reviewId, String complaintId,
+                 String totalTime, Address address) {
+        super(customerPlaceOrder, restaurantReceiveOrder, raiderReceiveOrder, raiderReceiveFoods, customerReceiveOrder);
         this.id = id;
-        this.userId = userId;
-        this.raiderId = raiderId;
+        this.customerId = customerId;
         this.restaurantId = restaurantId;
-        this.items = items;
-        this.instruction = instruction;
+        this.raiderId = raiderId;
+        this.restaurantTakeOrder = restaurantTakeOrder;
+        this.raiderTakeOrder = raiderTakeOrder;
         this.totalAmount = totalAmount;
         this.discountAmount = discountAmount;
         this.finalAmount = finalAmount;
-        this.raiderRating = raiderRating;
-        this.foodRating = foodRating;
-        this.complaintAgainstRaiderId = complaintAgainstRaiderId;
-        this.complaintAgainstFoodId = complaintAgainstFoodId;
-        this.complaintAgainstRestaurantId = complaintAgainstRestaurantId;
+        this.foodsIds = foodsIds;
+        this.raiderReceiveAmount = raiderReceiveAmount;
+        this.complete = complete;
         this.reviewId = reviewId;
+        this.complaintId = complaintId;
+        this.totalTime = totalTime;
+        this.address = address;
     }
 
     public String getId() {
@@ -56,20 +62,12 @@ public class Order extends OrderProcessing {
         this.id = id;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getRaiderId() {
-        return raiderId;
-    }
-
-    public void setRaiderId(String raiderId) {
-        this.raiderId = raiderId;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 
     public String getRestaurantId() {
@@ -80,20 +78,28 @@ public class Order extends OrderProcessing {
         this.restaurantId = restaurantId;
     }
 
-    public Item[] getItems() {
-        return items;
+    public String getRaiderId() {
+        return raiderId;
     }
 
-    public void setItems(Item[] items) {
-        this.items = items;
+    public void setRaiderId(String raiderId) {
+        this.raiderId = raiderId;
     }
 
-    public String getInstruction() {
-        return instruction;
+    public boolean isRestaurantTakeOrder() {
+        return restaurantTakeOrder;
     }
 
-    public void setInstruction(String instruction) {
-        this.instruction = instruction;
+    public void setRestaurantTakeOrder(boolean restaurantTakeOrder) {
+        this.restaurantTakeOrder = restaurantTakeOrder;
+    }
+
+    public boolean isRaiderTakeOrder() {
+        return raiderTakeOrder;
+    }
+
+    public void setRaiderTakeOrder(boolean raiderTakeOrder) {
+        this.raiderTakeOrder = raiderTakeOrder;
     }
 
     public Double getTotalAmount() {
@@ -120,44 +126,28 @@ public class Order extends OrderProcessing {
         this.finalAmount = finalAmount;
     }
 
-    public Integer getRaiderRating() {
-        return raiderRating;
+    public String[] getFoodsIds() {
+        return foodsIds;
     }
 
-    public void setRaiderRating(Integer raiderRating) {
-        this.raiderRating = raiderRating;
+    public void setFoodsIds(String[] foodsIds) {
+        this.foodsIds = foodsIds;
     }
 
-    public Integer getFoodRating() {
-        return foodRating;
+    public boolean isRaiderReceiveAmount() {
+        return raiderReceiveAmount;
     }
 
-    public void setFoodRating(Integer foodRating) {
-        this.foodRating = foodRating;
+    public void setRaiderReceiveAmount(boolean raiderReceiveAmount) {
+        this.raiderReceiveAmount = raiderReceiveAmount;
     }
 
-    public String getComplaintAgainstRaiderId() {
-        return complaintAgainstRaiderId;
+    public boolean isComplete() {
+        return complete;
     }
 
-    public void setComplaintAgainstRaiderId(String complaintAgainstRaiderId) {
-        this.complaintAgainstRaiderId = complaintAgainstRaiderId;
-    }
-
-    public String getComplaintAgainstFoodId() {
-        return complaintAgainstFoodId;
-    }
-
-    public void setComplaintAgainstFoodId(String complaintAgainstFoodId) {
-        this.complaintAgainstFoodId = complaintAgainstFoodId;
-    }
-
-    public String getComplaintAgainstRestaurantId() {
-        return complaintAgainstRestaurantId;
-    }
-
-    public void setComplaintAgainstRestaurantId(String complaintAgainstRestaurantId) {
-        this.complaintAgainstRestaurantId = complaintAgainstRestaurantId;
+    public void setComplete(boolean complete) {
+        this.complete = complete;
     }
 
     public String getReviewId() {
@@ -168,25 +158,48 @@ public class Order extends OrderProcessing {
         this.reviewId = reviewId;
     }
 
+    public String getComplaintId() {
+        return complaintId;
+    }
+
+    public void setComplaintId(String complaintId) {
+        this.complaintId = complaintId;
+    }
+
+    public String getTotalTime() {
+        return totalTime;
+    }
+
+    public void setTotalTime(String totalTime) {
+        this.totalTime = totalTime;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
-                "id='" + id + '\'' +
-                ", userId='" + userId + '\'' +
-                ", raiderId='" + raiderId + '\'' +
-                ", restaurantId='" + restaurantId + '\'' +
-                ", items=" + Arrays.toString(items) +
-                ", instruction='" + instruction + '\'' +
+                "id=" + id +
+                ", customerId=" + customerId +
+                ", restaurantId=" + restaurantId +
+                ", raiderId=" + raiderId +
+                ", restaurantTakeOrder=" + restaurantTakeOrder +
+                ", raiderTakeOrder=" + raiderTakeOrder +
                 ", totalAmount=" + totalAmount +
                 ", discountAmount=" + discountAmount +
                 ", finalAmount=" + finalAmount +
-                ", raiderRating=" + raiderRating +
-                ", foodRating=" + foodRating +
-                ", complaintAgainstRaiderId='" + complaintAgainstRaiderId + '\'' +
-                ", complaintAgainstFoodId='" + complaintAgainstFoodId + '\'' +
-                ", complaintAgainstRestaurantId='" + complaintAgainstRestaurantId + '\'' +
-                ", reviewId='" + reviewId + '\'' +
-                super.toString() + " " +
+                ", foodsIds=" + Arrays.toString(foodsIds) +
+                ", raiderReceiveAmount=" + raiderReceiveAmount +
+                ", complete=" + complete +
+                ", reviewId=" + reviewId +
+                ", complaintId=" + complaintId +
+                ", totalTime=" + totalTime +
                 '}';
     }
 }

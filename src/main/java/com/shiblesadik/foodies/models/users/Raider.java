@@ -1,49 +1,35 @@
 package com.shiblesadik.foodies.models.users;
 
-import com.shiblesadik.foodies.models.areas.Address;
-import com.shiblesadik.foodies.models.areas.Location;
-import com.shiblesadik.foodies.models.orders.Order;
-import com.shiblesadik.foodies.models.reviews.Complaint;
-import com.shiblesadik.foodies.models.reviews.Review;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Arrays;
 
-@Document(collection = "raider")
+@Document(collection = "raiders")
 public class Raider extends User {
     private Double rating;
     private boolean available;
-    private boolean onRide;
-    private String password;
-    private Address[] addresses;
-    private Order[] orders;
-    private Order[] cancelOrders;
-    private Review[] reviews;
-    private Complaint[] complaints;
-    private Location currentLocation;
+    private boolean onDuty;
+    private String numberOfOrder;
+    private String[] ordersIds;
+    private String[] reviewsIds;
+    private String[] complaintsIds;
+    private String lastOrderId;
 
     public Raider() {
     }
 
-    public Raider(String id, String name, String phone, String email, String avatar, String role, Location homeAddress, Double rating,
-                  boolean available, boolean onRide, Address[] addresses, Order[] orders, Order[] cancelOrders,
-                  Review[] reviews, Complaint[] complaints, Location currentLocation) {
-        super(id, name, phone, email, avatar, role, homeAddress);
+    public Raider(String id, String name, String email, String phone, String avatar, String areaId,
+                  Double rating, boolean available, boolean onDuty, String numberOfOrder, String[] ordersIds,
+                  String[] reviewsIds, String[] complaintsIds, String lastOrderId) {
+        super(id, name, email, phone, avatar, areaId);
         this.rating = rating;
         this.available = available;
-        this.onRide = onRide;
-        this.addresses = addresses;
-        this.orders = orders;
-        this.cancelOrders = cancelOrders;
-        this.reviews = reviews;
-        this.complaints = complaints;
-        this.currentLocation = currentLocation;
-    }
-
-    public void prepareForRegistration(String username, String email, String password) {
-        this.setPhone(username);
-        this.setEmail(email);
-        this.password = password;
+        this.onDuty = onDuty;
+        this.numberOfOrder = numberOfOrder;
+        this.ordersIds = ordersIds;
+        this.reviewsIds = reviewsIds;
+        this.complaintsIds = complaintsIds;
+        this.lastOrderId = lastOrderId;
     }
 
     public Double getRating() {
@@ -62,75 +48,65 @@ public class Raider extends User {
         this.available = available;
     }
 
-    public boolean isOnRide() {
-        return onRide;
+    public boolean isOnDuty() {
+        return onDuty;
     }
 
-    public void setOnRide(boolean onRide) {
-        this.onRide = onRide;
+    public void setOnDuty(boolean onDuty) {
+        this.onDuty = onDuty;
     }
 
-    public Address[] getAddresses() {
-        return addresses;
+    public String getNumberOfOrder() {
+        return numberOfOrder;
     }
 
-    public void setAddresses(Address[] addresses) {
-        this.addresses = addresses;
+    public void setNumberOfOrder(String numberOfOrder) {
+        this.numberOfOrder = numberOfOrder;
     }
 
-    public Order[] getOrders() {
-        return orders;
+    public String[] getOrdersIds() {
+        return ordersIds;
     }
 
-    public void setOrders(Order[] orders) {
-        this.orders = orders;
+    public void setOrdersIds(String[] ordersIds) {
+        this.ordersIds = ordersIds;
     }
 
-    public Order[] getCancelOrders() {
-        return cancelOrders;
+    public String[] getReviewsIds() {
+        return reviewsIds;
     }
 
-    public void setCancelOrders(Order[] cancelOrders) {
-        this.cancelOrders = cancelOrders;
+    public void setReviewsIds(String[] reviewsIds) {
+        this.reviewsIds = reviewsIds;
     }
 
-    public Review[] getReviews() {
-        return reviews;
+    public String[] getComplaintsIds() {
+        return complaintsIds;
     }
 
-    public void setReviews(Review[] reviews) {
-        this.reviews = reviews;
+    public void setComplaintsIds(String[] complaintsIds) {
+        this.complaintsIds = complaintsIds;
     }
 
-    public Complaint[] getComplaints() {
-        return complaints;
+    public String getLastOrderId() {
+        return lastOrderId;
     }
 
-    public void setComplaints(Complaint[] complaints) {
-        this.complaints = complaints;
-    }
-
-    public Location getCurrentLocation() {
-        return currentLocation;
-    }
-
-    public void setCurrentLocation(Location currentLocation) {
-        this.currentLocation = currentLocation;
+    public void setLastOrderId(String lastOrderId) {
+        this.lastOrderId = lastOrderId;
     }
 
     @Override
     public String toString() {
         return "Raider{" +
-                super.toString() + " " +
                 "rating=" + rating +
                 ", available=" + available +
-                ", onRide=" + onRide +
-                ", addresses=" + Arrays.toString(addresses) +
-                ", orders=" + Arrays.toString(orders) +
-                ", cancelOrders=" + Arrays.toString(cancelOrders) +
-                ", reviews=" + Arrays.toString(reviews) +
-                ", complaints=" + Arrays.toString(complaints) +
-                ", currentLocation=" + currentLocation +
+                ", onDuty=" + onDuty +
+                ", numberOfOrder=" + numberOfOrder +
+                ", ordersIds=" + Arrays.toString(ordersIds) +
+                ", reviewsIds=" + Arrays.toString(reviewsIds) +
+                ", complaintsIds=" + Arrays.toString(complaintsIds) +
+                ", lastOrderId='" + lastOrderId + '\'' +
                 '}';
     }
 }
