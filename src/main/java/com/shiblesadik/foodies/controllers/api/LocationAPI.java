@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/location")
-public class LocationApi {
+public class LocationAPI {
     @Autowired
     private CityRepository cityRepository;
     @Autowired
