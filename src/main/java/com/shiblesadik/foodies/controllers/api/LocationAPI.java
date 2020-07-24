@@ -36,6 +36,12 @@ public class LocationAPI {
 
     @PostMapping("/city/insert")
     public City insertCity(@RequestBody City city) {
+        List<City> cityList = findCitiesByName(city.getName());
+        for (City city2: cityList) {
+            if (city2.getName().equals(city.getName())) {
+                return null;
+            }
+        }
         cityRepository.save(city);
         return city;
     }
@@ -70,6 +76,12 @@ public class LocationAPI {
 
     @PostMapping("/area/insert")
     public Area insertArea(@RequestBody Area area) {
+        Area area1 = areaRepository.findByNameLikeAndCityId(area.getName(), area.getCityId());
+        if (area1 != null) return null;
+        area.setNumberOfRestaurants(0);
+        area.setNumberOfRaider(0);
+        area.setNumberOfCustomer(0);
+        area.setNumberOfAdmin(0);
         areaRepository.save(area);
         return area;
     }

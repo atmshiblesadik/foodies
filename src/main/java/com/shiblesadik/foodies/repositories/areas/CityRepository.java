@@ -9,7 +9,5 @@ import java.util.Optional;
 public interface CityRepository extends MongoRepository<City, String> {
     Optional<City> findById(String id);
 
-    Optional<City> findByNameLike(String name);
-
     List<City> findAllByNameIsLike(String name);
 }

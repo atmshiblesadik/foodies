@@ -15,5 +15,15 @@ public interface RestaurantRepository extends MongoRepository<Restaurant, String
 
     List<Restaurant> findAllByAreaId(String areaId);
 
+    Restaurant findByPhone(String phone);
+
+    Restaurant findByEmail(String email);
+
+    Restaurant findByPhoneAndPassword(String phone, String password);
+
+    Restaurant findByEmailAndPassword(String email, String password);
+
+    Restaurant findByPhoneAndEmail(String phone, String email);
+
 //    List<Restaurant> findRestaurantByComplaintsIdsExists(String complaintId);
 }

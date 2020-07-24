@@ -21,9 +21,9 @@ public class Restaurant {
     private String avatar;
     private String areaId;
     private Double rating;
-    private String numberOfFoods;
-    private String numberOfCategories;
-    private String numberOfOrders;
+    private Integer numberOfFoods;
+    private Integer numberOfCategories;
+    private Integer numberOfOrders;
     private String[] foodsIds;
     private String[] categoriesIds;
     private String[] ordersIds;
@@ -35,7 +35,7 @@ public class Restaurant {
 
     public Restaurant(String id, String name, String email, String phone, String[] phones, String openingTime,
                       String closingTime, boolean open, String avatar, String areaId, Double rating,
-                      String numberOfFoods, String numberOfCategories, String numberOfOrders, String[] foodsIds,
+                      Integer numberOfFoods, Integer numberOfCategories, Integer numberOfOrders, String[] foodsIds,
                       String[] categoriesIds, String[] ordersIds, String[] reviewsIds, String[] complaintsIds) {
         this.id = id;
         this.name = name;
@@ -162,27 +162,27 @@ public class Restaurant {
         this.rating = rating;
     }
 
-    public String getNumberOfFoods() {
+    public Integer getNumberOfFoods() {
         return numberOfFoods;
     }
 
-    public void setNumberOfFoods(String numberOfFoods) {
+    public void setNumberOfFoods(Integer numberOfFoods) {
         this.numberOfFoods = numberOfFoods;
     }
 
-    public String getNumberOfCategories() {
+    public Integer getNumberOfCategories() {
         return numberOfCategories;
     }
 
-    public void setNumberOfCategories(String numberOfCategories) {
+    public void setNumberOfCategories(Integer numberOfCategories) {
         this.numberOfCategories = numberOfCategories;
     }
 
-    public String getNumberOfOrders() {
+    public Integer getNumberOfOrders() {
         return numberOfOrders;
     }
 
-    public void setNumberOfOrders(String numberOfOrders) {
+    public void setNumberOfOrders(Integer numberOfOrders) {
         this.numberOfOrders = numberOfOrders;
     }
 
