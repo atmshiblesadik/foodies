@@ -12,15 +12,15 @@ public class Category {
     private String name;
     private String details;
     private String avatar;
-    private String numberOfFoods;
-    private String numberOfRestaurants;
+    private Integer numberOfFoods;
+    private Integer numberOfRestaurants;
     private String[] foodsIds;
     private String[] restaurantsIds;
 
     public Category() {
     }
 
-    public Category(String id, String name, String details, String avatar, String numberOfRestaurants, String numberOfFoods) {
+    public Category(String id, String name, String details, String avatar, Integer numberOfRestaurants, Integer numberOfFoods) {
         this.id = id;
         this.name = name;
         this.details = details;
@@ -61,19 +61,19 @@ public class Category {
         this.avatar = avatar;
     }
 
-    public String getNumberOfRestaurants() {
+    public Integer getNumberOfRestaurants() {
         return numberOfRestaurants;
     }
 
-    public void setNumberOfRestaurants(String numberOfRestaurants) {
+    public void setNumberOfRestaurants(Integer numberOfRestaurants) {
         this.numberOfRestaurants = numberOfRestaurants;
     }
 
-    public String getNumberOfFoods() {
+    public Integer getNumberOfFoods() {
         return numberOfFoods;
     }
 
-    public void setNumberOfFoods(String numberOfFoods) {
+    public void setNumberOfFoods(Integer numberOfFoods) {
         this.numberOfFoods = numberOfFoods;
     }
 
